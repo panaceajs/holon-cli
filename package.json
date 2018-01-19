@@ -1,6 +1,6 @@
 {
   "name": "@panacea/holon-cli",
-  "version": "0.0.3",
+  "version": "0.0.2",
   "main": "index.js",
   "license": "MIT",
   "bin": {
@@ -13,6 +13,7 @@
     "inquirer": "^5.0.0",
     "lodash.merge": "^4.6.0",
     "lodash.template": "^4.4.0",
+    "plugin-error": "^1.0.0",
     "through2": "^2.0.3",
     "upper-case-first": "^1.1.2",
     "vinyl-fs": "^3.0.1",

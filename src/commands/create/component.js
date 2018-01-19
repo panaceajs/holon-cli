@@ -5,7 +5,6 @@ const {
 const path = require('path');
 const vfs = require('vinyl-fs');
 const template = require('../../lib/vfs-template');
-const conflict = require('../../lib/conflict');
 
 exports.command = 'create-component <name>';
 
@@ -44,7 +43,6 @@ exports.handler = async argv => {
 
   return vfs
     .src(glob, { cwd: __dirname })
-    .pipe(conflict(argv.name))
     .pipe(template({ component: { ...argv } }))
     .pipe(vfs.dest(`./${argv.name}`, { cwd: process.cwd() }));
 };

@@ -5,7 +5,7 @@ const yargs = require('yargs');
 const { argv } = yargs
   .commandDir('../src/commands', {
     recurse: true,
-    exclude: [/full/, /templates/]
+    exclude: /full/
   })
   .demandCommand()
   .version(pkg.version)

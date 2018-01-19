@@ -12,7 +12,7 @@ describe('<%= component.name %> component', () => {<% if(component.withStyles){ 
   beforeEach(() => {
     mount = createMount();
   });
-<% } 
+<% }
 const renderWrapper = (target) => {
   return `${component.withStyles? 'mount': 'shallow'}(${component.withStyles? '<MuiThemeProvider theme={theme}>': ''}${target}${component.withStyles? '</MuiThemeProvider>': ''});`
 }
@@ -25,7 +25,7 @@ const renderWrapper = (target) => {
 <% if(component.props) {
   component.props.forEach(prop => {
     %>
-  it('should set `<%= prop %>` prop correctly', () => {
+  it('should set `<%= prop %>` prop properly', () => {
     const <%= prop%> = 'prop value';
     const wrapper = <%= renderWrapper(`<${component.name} ${prop}={${prop}}/>`) %>
     expect(wrapper).toMatchSnapshot();

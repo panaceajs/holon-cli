@@ -2,7 +2,6 @@ const {
   toVariableName,
   toUpperCaseVariableName
 } = require('../../lib/strings');
-const path = require('path');
 const vfs = require('vinyl-fs');
 const template = require('../../lib/vfs-template');
 
@@ -33,10 +32,10 @@ exports.builder = yargs =>
       props: props => props.map(toVariableName)
     })
     .example('$0 create component', exports.describe)
+    .example('$0 create component', exports.describe)
     .strict();
 
 exports.handler = async argv => {
-  const name = path.basename(argv.name);
   const glob = argv.testsOnly
     ? '../../../templates/create/component/**/__tests__/*.js'
     : '../../../templates/create/component/**/*.js';

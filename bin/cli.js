@@ -3,7 +3,7 @@ const pkg = require('../package.json');
 const yargs = require('yargs');
 
 const { argv } = yargs
-  .commandDir('../src/commands', { recurse: true })
+  .commandDir('../src/commands', { recurse: true, exclude: /full/ })
   .demandCommand()
   .version(pkg.version)
   .help()

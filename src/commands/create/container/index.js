@@ -1,8 +1,8 @@
-const { toVariableName } = require('../../lib/strings');
 const vfs = require('vinyl-fs');
 const path = require('path');
-const constantCase = require('constant-case');
-const template = require('../../lib/vfs-template');
+const template = require('../../../lib/vfs/template');
+const { fancyFileLog } = require('../../../lib/file-log');
+const { toVariableName } = require('../../../lib/strings');
 
 exports.command = 'create-container <targetComponent>';
 
@@ -11,14 +11,19 @@ exports.describe = 'Creates a react-redux container in the current directory.';
 exports.builder = yargs =>
   yargs
     .option({
-      mappedProps: {
+      state: {
+        type: 'string',
+        alias: ['s', 'statePrefix'],
+        describe: `State prefix name of combined reducer`
+      },
+      map: {
         type: 'array',
-        alias: 'm',
+        alias: ['m', 'mapProps'],
         describe: `List of props mapped in \`mapStateToProps\`, separated by \`, \``
       },
-      dispatchProps: {
+      dispatch: {
         type: 'array',
-        alias: 'd',
+        alias: ['d', 'dispatchProps'],
         describe: `List of prop functions mapped in \`mapDispatchToProps\`, separated by \`, \``
       },
       testsOnly: {
@@ -30,37 +35,37 @@ exports.builder = yargs =>
     .coerce({
       targetComponent: targetComponent =>
         path.relative(process.cwd(), targetComponent),
-      mappedProps: props => props.map(toVariableName),
-      dispatchProps: props => props.map(toVariableName)
+      map: props => props.map(toVariableName),
+      dispatch: props => props.map(toVariableName)
     })
     .example(
-      '$0 create container ../../components/MyComponent',
+      '$0 create-container ../../components/MyComponent',
       `Creates a react-redux hoc container in \`./MyComponent\``
     )
     .example(
-      '$0 create container ../../components/MyComponent --mappedProps one, two, three',
+      '$0 create-container ../../components/MyComponent --map one, two, three',
       `Creates a react-redux hoc container with tests in \`./MyComponent\`, maps props \`one\`, \`two\` and \`three\`.`
     )
     .example(
-      '$0 create container ../../components/MyComponent --dispatchProps someFunction, someOtherFunction',
+      '$0 create-container ../../components/MyComponent --dispatch someFunction, someOtherFunction',
       `Creates a react-redux hoc container with tests in \`./MyComponent\`, maps prop functions \`someFunction\` and \`someOtherFunction\`.`
     )
     .example(
-      '$0 create container ../../components/MyComponent --testsOnly',
+      '$0 create-container ../../components/MyComponent --testsOnly',
       `Creates tests in \`./MyComponent\`.`
     )
     .strict();
 
 exports.handler = async argv => {
   const name = path.basename(argv.targetComponent);
-  console.log({ ...argv, name });
 
   const glob = argv.testsOnly
-    ? '../../../templates/create/container/**/__tests__/*.js'
-    : '../../../templates/create/container/**/*.js';
+    ? '../../../../templates/container/**/*.spec.js'
+    : '../../../../templates/container/**/*.js';
 
   return vfs
     .src(glob, { cwd: __dirname })
-    .pipe(template({ container: { ...argv, name }, utils: { constantCase } }))
-    .pipe(vfs.dest(`./${name}`, { cwd: process.cwd() }));
+    .pipe(template({ container: { ...argv, name } }))
+    .pipe(vfs.dest(`./${name}`, { cwd: process.cwd() }))
+    .pipe(fancyFileLog());
 };

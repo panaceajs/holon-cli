@@ -1,9 +1,11 @@
+const vfs = require('vinyl-fs');
+const { basename } = require('path');
 const {
   toVariableName,
   toUpperCaseVariableName
-} = require('../../lib/strings');
-const vfs = require('vinyl-fs');
-const template = require('../../lib/vfs-template');
+} = require('../../../lib/strings');
+const template = require('../../../lib/vfs/template');
+const { fancyFileLog } = require('../../../lib/file-log');
 
 exports.command = 'create-component <name>';
 
@@ -54,11 +56,19 @@ exports.builder = yargs =>
 
 exports.handler = async argv => {
   const glob = argv.testsOnly
-    ? '../../../templates/create/component/**/__tests__/*.js'
-    : '../../../templates/create/component/**/*.js';
+    ? '../../../../templates/component/**/*.spec.js'
+    : '../../../../templates/component/**/*.js';
 
   return vfs
     .src(glob, { cwd: __dirname })
-    .pipe(template({ component: { ...argv } }))
-    .pipe(vfs.dest(`./${argv.name}`, { cwd: process.cwd() }));
+    .pipe(
+      template({
+        paths: { cwd: process.cwd(), cwdDir: basename(process.cwd()) },
+        component: {
+          ...argv
+        }
+      })
+    )
+    .pipe(vfs.dest(`./${argv.name}`, { cwd: process.cwd() }))
+    .pipe(fancyFileLog());
 };

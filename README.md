@@ -30,6 +30,10 @@ $ holon create-component
 $ holon create-container
 ```
 
+```
+$ holon create-actions
+```
+
 ## License
 
 [MIT](LICENSE).

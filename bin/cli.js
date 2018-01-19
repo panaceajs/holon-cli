@@ -7,7 +7,7 @@ const { argv } = yargs
   .demandCommand()
   .version(pkg.version)
   .help()
-  .wrap(80)
+  .wrap(120)
   .strict()
   .epilog('copyright 2018');
 

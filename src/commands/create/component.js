@@ -14,16 +14,16 @@ exports.builder = yargs =>
   yargs
     .option({
       props: {
-        describe: 'list of props, separate by `, `',
+        describe: 'List of props, separate by `, `.',
         type: 'array'
-      },
-      testsOnly: {
-        describe: 'creates just the test, not the component itself',
-        type: 'boolean'
       },
       withStyles: {
         describe:
-          'wraps the component in a withStyles hoc, uses mount instead of shallow for testing',
+          'Wraps the component in a `withStyles` hoc, uses mount instead of shallow for testing.',
+        type: 'boolean'
+      },
+      testsOnly: {
+        describe: 'Creates just the test, not the component itself.',
         type: 'boolean'
       }
     })
@@ -31,8 +31,22 @@ exports.builder = yargs =>
       name: toUpperCaseVariableName,
       props: props => props.map(toVariableName)
     })
-    .example('$0 create component', exports.describe)
-    .example('$0 create component', exports.describe)
+    .example(
+      '$0 create-component YourComponent',
+      `Creates a component with tests in ./YourComponent.`
+    )
+    .example(
+      '$0 create-component YourComponent --props one, two, three',
+      `Creates a component with tests in ./YourComponent with \`one\`,  \`two\` and  \`three\` as props.`
+    )
+    .example(
+      '$0 create-component YourComponent --withStyles',
+      `Creates a component with tests in ./YourComponent with a material-ui \`withStyles\` hoc.`
+    )
+    .example(
+      '$0 create-component YourComponent --testsOnly',
+      `Creates tests in ./YourComponent/__tests__.`
+    )
     .strict();
 
 exports.handler = async argv => {

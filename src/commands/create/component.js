@@ -8,23 +8,26 @@ const template = require('../../lib/vfs-template');
 exports.command = 'create-component <name>';
 
 exports.describe =
-  'creates a react stateless functional component in the current directory';
+  'Creates a react stateless functional component with tests in the current directory.';
 
 exports.builder = yargs =>
   yargs
     .option({
       props: {
-        describe: 'List of props, separate by `, `.',
-        type: 'array'
+        type: 'array',
+        alias: 'p',
+        describe: 'List of props, separated by `, `.'
       },
       withStyles: {
+        type: 'boolean',
+        alias: 'w',
         describe:
-          'Wraps the component in a `withStyles` hoc, uses mount instead of shallow for testing.',
-        type: 'boolean'
+          'Wraps the component in a `withStyles` hoc, uses mount instead of shallow for testing.'
       },
       testsOnly: {
-        describe: 'Creates just the test, not the component itself.',
-        type: 'boolean'
+        type: 'boolean',
+        alias: 't',
+        describe: 'Creates just the test, not the component itself.'
       }
     })
     .coerce({
@@ -32,20 +35,20 @@ exports.builder = yargs =>
       props: props => props.map(toVariableName)
     })
     .example(
-      '$0 create-component YourComponent',
-      `Creates a component with tests in ./YourComponent.`
+      '$0 create-component MyComponent',
+      `Creates a component with tests in ./MyComponent.`
     )
     .example(
-      '$0 create-component YourComponent --props one, two, three',
-      `Creates a component with tests in ./YourComponent with \`one\`,  \`two\` and  \`three\` as props.`
+      '$0 create-component MyComponent --props one, two, three',
+      `Creates a component with tests in ./MyComponent with \`one\`,  \`two\` and  \`three\` as props.`
     )
     .example(
-      '$0 create-component YourComponent --withStyles',
-      `Creates a component with tests in ./YourComponent with a material-ui \`withStyles\` hoc.`
+      '$0 create-component MyComponent --withStyles',
+      `Creates a component with tests in ./MyComponent with a material-ui \`withStyles\` hoc.`
     )
     .example(
-      '$0 create-component YourComponent --testsOnly',
-      `Creates tests in ./YourComponent/__tests__.`
+      '$0 create-component MyComponent --testsOnly',
+      `Creates tests in ./MyComponent/__tests__.`
     )
     .strict();
 

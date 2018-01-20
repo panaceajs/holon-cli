@@ -26,6 +26,12 @@ exports.builder = yargs =>
         alias: ['d', 'dispatchProps'],
         describe: `List of prop functions mapped in \`mapDispatchToProps\`, separated by \`, \``
       },
+      theme: {
+        type: 'string',
+        alias: 'T',
+        describe: 'Path to exported createMuiTheme()',
+        default: 'shared/themes'
+      },
       testsOnly: {
         type: 'boolean',
         alias: 't',

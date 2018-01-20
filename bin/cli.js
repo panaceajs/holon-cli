@@ -8,6 +8,7 @@ const { argv } = yargs
     exclude: /full/
   })
   .demandCommand()
+  .pkgConf('holon')
   .version(pkg.version)
   .help()
   .alias('help', 'h')

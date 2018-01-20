@@ -22,7 +22,6 @@ $ yarn add -g @panacea/holon
 
 ## Usage
 
-
 ### Create react stateless function component
 
 ```
@@ -35,6 +34,7 @@ Options:
   --help, -h        Show help                                                                                  [boolean]
   --props, -p       List of props, separated by `, `.                                                            [array]
   --withStyles, -w  Wraps the component in a `withStyles` hoc, uses mount instead of shallow for testing.      [boolean]
+  --theme, -T       Path to exported createMuiTheme()                                [string] [default: "shared/themes"]
   --testsOnly, -t   Creates just the test, not the component itself.                                           [boolean]
 
 Examples:
@@ -60,6 +60,7 @@ Options:
   --state, -s, --statePrefix       State prefix name of combined reducer                                        [string]
   --map, -m, --mapProps            List of props mapped in `mapStateToProps`, separated by `, `                  [array]
   --dispatch, -d, --dispatchProps  List of prop functions mapped in `mapDispatchToProps`, separated by `, `      [array]
+  --theme, -T                      Path to exported createMuiTheme()                 [string] [default: "shared/themes"]
   --testsOnly, -t                  Creates just the test, not the component itself.                            [boolean]
 
 Examples:
@@ -90,6 +91,17 @@ Options:
 Examples:
   holon create-actions              Creates action creators and action-types with tests in ./actions and ./action-types.
   holon create-actions --testsOnly  Creates tests in ./actions/__tests__ and ./action-types/__tests__.
+```
+
+### Configuration
+
+You can override defaults in `package.json`.
+
+```
+...
+  "holon": {
+    "theme": "<path to your createMuitTheme() export"
+  }
 ```
 
 ## License

@@ -26,6 +26,12 @@ exports.builder = yargs =>
         describe:
           'Wraps the component in a `withStyles` hoc, uses mount instead of shallow for testing.'
       },
+      theme: {
+        type: 'string',
+        alias: 'T',
+        describe: 'Path to exported createMuiTheme()',
+        default: 'shared/themes'
+      },
       testsOnly: {
         type: 'boolean',
         alias: 't',
@@ -55,6 +61,7 @@ exports.builder = yargs =>
     .strict();
 
 exports.handler = async argv => {
+  console.log(argv);
   const glob = argv.testsOnly
     ? '../../../../templates/component/**/*.spec.js'
     : '../../../../templates/component/**/*.js';

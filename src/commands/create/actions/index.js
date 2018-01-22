@@ -20,6 +20,11 @@ exports.builder = yargs =>
         alias: 'a',
         describe: 'List of action names, separated by `, `.'
       },
+      state: {
+        type: 'string',
+        alias: ['s', 'stateNamespace'],
+        describe: `State namespace of combined reducer. Defaults to current directory name`
+      },
       testsOnly: {
         type: 'boolean',
         alias: 't',
@@ -29,7 +34,8 @@ exports.builder = yargs =>
     })
     .coerce({
       name: toUpperCaseVariableName,
-      props: props => props.map(toVariableName)
+      props: props => props.map(toVariableName),
+      state: state => state || basename(process.cwd())
     })
     .example(
       '$0 create-actions',
@@ -38,8 +44,7 @@ exports.builder = yargs =>
     .example(
       '$0 create-actions --testsOnly',
       `Creates tests in ./actions/__tests__ and ./action-types/__tests__.`
-    )
-    .strict();
+    );
 
 exports.handler = async argv => {
   const glob = argv.testsOnly

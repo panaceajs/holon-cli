@@ -57,7 +57,7 @@ Creates a react-redux container in the current directory.
 Options:
   --version, -v                    Show version number                                                         [boolean]
   --help, -h                       Show help                                                                   [boolean]
-  --state, -s, --statePrefix       State prefix name of combined reducer                                        [string]
+  --state, -s, --stateNamespace    State namespace of combined reducer                                          [string]
   --map, -m, --mapProps            List of props mapped in `mapStateToProps`, separated by `, `                  [array]
   --dispatch, -d, --dispatchProps  List of prop functions mapped in `mapDispatchToProps`, separated by `, `      [array]
   --theme, -T                      Path to exported createMuiTheme()                 [string] [default: "shared/themes"]
@@ -70,6 +70,8 @@ Examples:
   holon create-container ../../components/MyComponent           Creates a react-redux hoc container with tests in
   --dispatch someFunction, someOtherFunction                    `./MyComponent`, maps prop functions `someFunction` and
                                                                 `someOtherFunction`.
+  holon create-container ../../components/MyComponent           Creates a react-redux hoc container with tests in
+  --stateNamespace login                                        `./MyComponent`, assumes `login` as state namespace.
   holon create-container ../../components/MyComponent           Creates tests in `./MyComponent`.
   --testsOnly
 ```
@@ -83,10 +85,11 @@ $ holon create-actions -h
 Creates redux action creators and action-type with tests in the current directory.
 
 Options:
-  --version, -v    Show version number                                                                         [boolean]
-  --help, -h       Show help                                                                                   [boolean]
-  --names, -a      List of action names, separated by `, `.                                                      [array]
-  --testsOnly, -t  Creates just the test, not the action creators and action-types itself.                     [boolean]
+  --version, -v                  Show version number                                                           [boolean]
+  --help, -h                     Show help                                                                     [boolean]
+  --names, -a                    List of action names, separated by `, `.                                        [array]
+  --state, -s, --stateNamespace  State namespace of combined reducer. Defaults to current directory name        [string]
+  --testsOnly, -t                Creates just the test, not the action creators and action-types itself.       [boolean]
 
 Examples:
   holon create-actions              Creates action creators and action-types with tests in ./actions and ./action-types.

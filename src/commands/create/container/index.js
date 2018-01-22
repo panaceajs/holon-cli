@@ -13,8 +13,8 @@ exports.builder = yargs =>
     .option({
       state: {
         type: 'string',
-        alias: ['s', 'statePrefix'],
-        describe: `State prefix name of combined reducer`
+        alias: ['s', 'stateNamespace'],
+        describe: `State namespace of combined reducer`
       },
       map: {
         type: 'array',
@@ -55,6 +55,10 @@ exports.builder = yargs =>
     .example(
       '$0 create-container ../../components/MyComponent --dispatch someFunction, someOtherFunction',
       `Creates a react-redux hoc container with tests in \`./MyComponent\`, maps prop functions \`someFunction\` and \`someOtherFunction\`.`
+    )
+    .example(
+      '$0 create-container ../../components/MyComponent --stateNamespace login',
+      `Creates a react-redux hoc container with tests in \`./MyComponent\`, assumes \`login\` as state namespace.`
     )
     .example(
       '$0 create-container ../../components/MyComponent --testsOnly',

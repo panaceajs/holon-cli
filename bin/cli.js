@@ -14,5 +14,4 @@ const { argv } = yargs
   .alias('help', 'h')
   .alias('version', 'v')
   .wrap(120)
-  .strict()
   .epilog('copyright 2018');

@@ -1,9 +1,8 @@
-const constantCase = require('constant-case');
 const camelCase = require('camel-case');
 const ucFirst = require('upper-case-first');
 
 module.exports = ({
-  container: { name, targetComponent, statePrefix, map, dispatch }
+  container: { name, targetComponent, stateNamespace, map, dispatch }
 }) => {
   const componentName = ucFirst(camelCase(name));
   return `import { connect } from 'react-redux';
@@ -13,9 +12,9 @@ ${
     map
       ? `const mapStateToProps = ${
           map
-            ? `({${statePrefix ? ` ${statePrefix}: {` : ``} ${map.join(
+            ? `({${stateNamespace ? ` ${stateNamespace}: {` : ``} ${map.join(
                 ', '
-              )} }${statePrefix ? ` }` : ``})`
+              )} }${stateNamespace ? ` }` : ``})`
             : `state`
         } => ({
 ${map.map(mapProp => `  ${mapProp}`).join(',\n')}

@@ -13,6 +13,7 @@
     "gulp-tap": "^1.0.1",
     "inquirer": "^5.0.0",
     "map-stream": "^0.0.7",
+    "multistream": "^2.1.0",
     "plugin-error": "^1.0.0",
     "through2": "^2.0.3",
     "upper-case-first": "^1.1.2",

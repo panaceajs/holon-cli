@@ -35,7 +35,8 @@ exports.builder = yargs =>
       testsOnly: {
         type: 'boolean',
         alias: 't',
-        describe: 'Creates just the test, not the component itself.'
+        describe: 'Creates just the test, not the component itself.',
+        default: false
       }
     })
     .coerce({
@@ -44,7 +45,7 @@ exports.builder = yargs =>
     })
     .example(
       '$0 create-component MyComponent',
-      `Creates a component with tests in ./MyComponent.`
+      `Creates a component with tests in \`./MyComponent\`.`
     )
     .example(
       '$0 create-component MyComponent --props one, two, three',
@@ -52,11 +53,11 @@ exports.builder = yargs =>
     )
     .example(
       '$0 create-component MyComponent --withStyles',
-      `Creates a component with tests in ./MyComponent with a material-ui \`withStyles\` hoc.`
+      `Creates a component with tests in \`./MyComponent\` with a material-ui \`withStyles\` hoc.`
     )
     .example(
       '$0 create-component MyComponent --testsOnly',
-      `Creates tests in ./MyComponent/__tests__.`
+      `Creates tests in \`./MyComponent/__tests__\`.`
     )
     .strict();
 

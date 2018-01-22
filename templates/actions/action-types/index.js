@@ -1,17 +1,19 @@
 const constantCase = require('constant-case');
 
-module.exports = ({ actions: { names, defaultNames } }) => {
-  const actionNames = names || defaultNames;
+module.exports = ({
+  actions: { actionTypes: givenActionTypes, defaultActionTypes }
+}) => {
+  const actionTypes = givenActionTypes || defaultActionTypes;
   return `${
-    names
+    givenActionTypes
       ? ``
       : `// 🔥 these action types are pretty random, best create your own
 `
-  }${actionNames
+  }${actionTypes
     .map(
-      actionName =>
-        `export const ${constantCase(actionName)} = '${constantCase(
-          actionName
+      actionType =>
+        `export const ${constantCase(actionType)} = '${constantCase(
+          actionType
         )}';`
     )
     .join('\n')}

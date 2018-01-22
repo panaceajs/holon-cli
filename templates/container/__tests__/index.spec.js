@@ -1,4 +1,3 @@
-const constantCase = require('constant-case');
 const camelCase = require('camel-case');
 const ucFirst = require('upper-case-first');
 
@@ -9,7 +8,7 @@ const renderWrapper = (componentString, withStyles) =>
       : `shallow(${componentString}, { dive: true })`
   }`;
 
-module.exports = ({ component: { name, withStyles, props, theme } }) => {
+module.exports = ({ container: { name, withStyles, props, theme } }) => {
   const componentName = ucFirst(camelCase(name));
   return `import React from 'react';
 ${

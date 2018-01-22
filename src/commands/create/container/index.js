@@ -35,7 +35,8 @@ exports.builder = yargs =>
       testsOnly: {
         type: 'boolean',
         alias: 't',
-        describe: 'Creates just the test, not the component itself.'
+        describe: 'Creates just the test, not the component itself.',
+        default: false
       }
     })
     .coerce({

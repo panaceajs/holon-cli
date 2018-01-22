@@ -1,21 +1,23 @@
 const constantCase = require('constant-case');
 const camelCase = require('camel-case');
 
-module.exports = ({ actions: { names, defaultNames } }) => {
-  const actionNames = names || defaultNames;
+module.exports = ({
+  actions: { actionTypes: givenActionTypes, defaultActionTypes }
+}) => {
+  const actionTypes = givenActionTypes || defaultActionTypes;
   return `import { createAction } from 'redux-actions';
-import { ${actionNames.map(constantCase).join(', ')} } from '../action-types';
+import { ${actionTypes.map(constantCase).join(', ')} } from '../action-types';
 ${
-    names
+    givenActionTypes
       ? ``
       : `
 // 🔥 these action types are pretty random, best create your own`
   }
-${actionNames
+${actionTypes
     .map(
-      actionName =>
-        `export const ${camelCase(actionName)} = createAction(${constantCase(
-          actionName
+      actionType =>
+        `export const ${camelCase(actionType)} = createAction(${constantCase(
+          actionType
         )});`
     )
     .join('\n')}

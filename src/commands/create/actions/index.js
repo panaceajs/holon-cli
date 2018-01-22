@@ -15,42 +15,50 @@ exports.describe =
 exports.builder = yargs =>
   yargs
     .option({
-      names: {
+      actionTypes: {
         type: 'array',
-        alias: 'a',
+        alias: ['a'],
         describe: 'List of action names, separated by `, `.'
       },
-      state: {
+      stateNamespace: {
         type: 'string',
-        alias: ['s', 'stateNamespace'],
-        describe: `State namespace of combined reducer. Defaults to current directory name`
+        alias: ['s', 'state'],
+        describe: `State namespace of combined reducer. Defaults to current directory name`,
+        default: basename(process.cwd())
       },
       testsOnly: {
         type: 'boolean',
         alias: 't',
         describe:
-          'Creates just the test, not the action creators and action-types itself.'
+          'Creates just the test, not the action creators and action-types itself.',
+        default: false
       }
     })
     .coerce({
       name: toUpperCaseVariableName,
-      props: props => props.map(toVariableName),
-      state: state => state || basename(process.cwd())
+      actionTypes: actionTypes => actionTypes.map(toVariableName)
     })
     .example(
       '$0 create-actions',
-      `Creates action creators and action-types with tests in ./actions and ./action-types.`
+      `Creates action creators and action-types with tests in \`./actions\` and \`./action-types\`.`
+    )
+    .example(
+      '$0 create-actions --actionTypes first, second, third',
+      `Creates tests in \`./actions/__tests__\` and \`./action-types/__tests__\` with \`first\`, \`second\` and \`third\` as actin types in \`./\`.`
+    )
+    .example(
+      '$0 create-actions --stateNamespace login',
+      `Creates tests in \`./actions/__tests__\` and \`./action-types/__tests__\` in \`./\`, assumes \`login\` as state namespace.`
     )
     .example(
       '$0 create-actions --testsOnly',
-      `Creates tests in ./actions/__tests__ and ./action-types/__tests__.`
+      `Creates tests in \`./actions/__tests__\` and \`./action-types/__tests__\`.`
     );
 
-exports.handler = async argv => {
+exports.handler = argv => {
   const glob = argv.testsOnly
     ? '../../../../templates/actions/**/*.spec.js'
     : '../../../../templates/actions/**/*.js';
-
   return vfs
     .src(glob, { cwd: __dirname })
     .pipe(
@@ -58,7 +66,10 @@ exports.handler = async argv => {
         paths: { cwd: process.cwd(), cwdDir: basename(process.cwd()) },
         actions: {
           ...argv,
-          defaultNames: ['aRandomAction', 'anotherRandomAction']
+          // name: toUpperCaseVariableName(argv.name),
+          // props: argv.props.map(toVariableName),
+          // state: argv.state || basename(process.cwd()),
+          defaultActionTypesNames: ['aRandomAction', 'anotherRandomAction']
         }
       })
     )

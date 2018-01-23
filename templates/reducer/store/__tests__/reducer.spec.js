@@ -19,6 +19,11 @@ describe('\`${stateNamespace}\` reducer', () => {
   it('should exist', () => {
     expect(reducer).toBeDefined();
   });
+
+  it('should return default state', () => {
+    const next = reducer(undefined, { type: 'UNKNOWN_TYPE'});
+    expect(next).toMatchSnapshot();
+  });
 ${
     actionTypes
       ? `

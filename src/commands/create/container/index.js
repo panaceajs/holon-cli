@@ -26,6 +26,12 @@ exports.builder = yargs =>
         alias: ['d', 'dispatchProps'],
         describe: `List of prop functions mapped in \`mapDispatchToProps\`, separated by \`, \``
       },
+      withStyles: {
+        type: 'boolean',
+        alias: 'w',
+        describe:
+          'Wraps the component in a `withStyles` hoc, uses mount instead of shallow for testing.'
+      },
       theme: {
         type: 'string',
         alias: 'T',

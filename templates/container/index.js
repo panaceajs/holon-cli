@@ -2,37 +2,41 @@ const camelCase = require('camel-case');
 const ucFirst = require('upper-case-first');
 
 module.exports = ({
-  container: { name, targetComponent, stateNamespace, map, dispatch }
+  container: { name, targetComponent, stateNamespace, mapProps, dispatchProps }
 }) => {
   const componentName = ucFirst(camelCase(name));
   return `import { connect } from 'react-redux';
 import ${componentName} from '../${targetComponent}';
-
 ${
-    map
+    dispatchProps
+      ? `import { ${dispatchProps
+          .map(dispatchProp => camelCase(dispatchProp))
+          .join(', ')} } from '../../actions';
+`
+      : ``
+  }
+${
+    mapProps
       ? `const mapStateToProps = ${
-          map
-            ? `({${stateNamespace ? ` ${stateNamespace}: {` : ``} ${map.join(
-                ', '
-              )} }${stateNamespace ? ` }` : ``})`
+          mapProps
+            ? `({${
+                stateNamespace ? ` ${stateNamespace}: {` : ``
+              } ${mapProps.join(', ')} }${stateNamespace ? ` }` : ``})`
             : `state`
         } => ({
-${map.map(mapProp => `  ${mapProp}`).join(',\n')}
+${mapProps.map(mapProp => `  ${mapProp}`).join(',\n')}
 });
 `
       : ``
   }
 ${
-    dispatch
+    dispatchProps
       ? `const mapDispatchToProps = dispatch => ({
-${dispatch
+${dispatchProps
           .map(
             dispatchProp =>
-              `  ${dispatchProp}: () => {
-    dispatch({
-      type: 'RANDOM_ACTION',
-      payload: '${dispatchProp}'
-    });
+              `  ${dispatchProp}: payload => {
+    dispatch(${camelCase(dispatchProp)}(payload));
   }`
           )
           .join(',\n')}
@@ -40,8 +44,8 @@ ${dispatch
 `
       : ``
   }
-export default connect(${map ? `mapStateToProps` : `null`}${
-    dispatch ? `, mapDispatchToProps` : ``
+export default connect(${mapProps ? `mapStateToProps` : `null`}${
+    dispatchProps ? `, mapDispatchToProps` : ``
   })(${componentName});
 `;
 };

@@ -14,4 +14,8 @@ const { argv } = yargs
   .alias('help', 'h')
   .alias('version', 'v')
   .wrap(120)
+  .completion(
+    'completion',
+    'Enable bash-completion shortcuts for commands and options.'
+  )
   .epilog('copyright 2018');

@@ -16,7 +16,7 @@ $ npm install -g @panacea/holon-cli
 If you are using yarn:
 
 ```
-$ yarn add -g @panacea/holon-cli
+$ yarn global add @panacea/holon-cli 
 ```
 
 

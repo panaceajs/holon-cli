@@ -22,7 +22,9 @@ $ yarn add -g @panacea/holon
 
 ## Usage
 
-### Create react stateless function component
+### Scaffolding
+
+#### Create react stateless function component
 
 ```
 $ holon create-component
@@ -47,7 +49,7 @@ Examples:
 ```
 
 
-### Create react-redux container
+#### Create react-redux container
 
 ```
 $ holon create-container
@@ -77,7 +79,7 @@ Examples:
 ```
 
 
-### Create action creators and types.
+#### Create action creators and types.
 
 ```
 $ holon create-actions -h
@@ -106,7 +108,7 @@ Examples:
                                                            `./action-types/__tests__`.
 ```
 
-### Create reducer, action creators and action types.
+#### Create reducer, action creators and action types.
 
 ```
 $ holon create-reducer
@@ -134,6 +136,15 @@ Examples:
                                                            in ./store, assumes `login` as state namespace.
   holon create-reducer --reducerOnly                       Creates reducer with tests in `./store/reducer`.
   holon create-reducer --testsOnly                         Creates reducer tests in `./store/__tests__`.
+```
+
+
+### Tab completion
+
+Enable bash-completion shortcuts for commands and options.
+
+```
+$ holon completion
 ```
 
 ### Configuration

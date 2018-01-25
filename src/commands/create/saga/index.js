@@ -8,12 +8,13 @@ const {
   toUpperCaseVariableName
 } = require('../../../lib/strings');
 const actionsModule = require('../actions');
+const reducerModule = require('../reducer');
 const { defaultActionTypes } = require('../../../globals');
 
-exports.command = 'create-reducer';
+exports.command = 'create-saga <name>';
 
 exports.describe =
-  'Creates redux reducer, action creators and action types with tests in the current directory.';
+  'Creates redux saga, reducer, action creators and action types with tests in the current directory.';
 
 exports.builder = yargs =>
   yargs
@@ -33,66 +34,76 @@ exports.builder = yargs =>
         type: 'boolean',
         alias: 'n',
         describe:
-          'Creates just the reducer. (Does not create action creators and action types)',
+          'Creates just the saga. (Does not create action creators and action types)',
         default: false
       },
       testsOnly: {
         type: 'boolean',
         alias: 't',
         describe:
-          'Creates just the reducer tests. (Does not create tests for action creators and action types)',
+          'Creates just the saga tests. (Does not create tests for action creators and action types)',
         default: false
       }
     })
     .coerce({
-      name: toUpperCaseVariableName,
+      name: toVariableName,
       actionTypes: actionTypes => actionTypes.map(toVariableName)
     })
     .example(
-      '$0 create-reducer',
-      `Creates reducer, action creators and action types with tests in \`./\`.`
+      '$0 create-saga',
+      `Creates saga, reducer, action creators and action types with tests in \`./\`.`
     )
     .example(
-      '$0 create-reducer --actionTypes first, second, third',
-      `Creates reducer, action creators and action types with tests with \`first\`, \`second\` and \`third\` as action types in ./store.`
+      '$0 create-saga --actionTypes first, second, third',
+      `Creates saga, reducer, action creators and action types with tests with \`first\`, \`second\` and \`third\` as action types in ./store.`
     )
     .example(
-      '$0 create-reducer --stateNamespace login',
-      `Creates reducer, action creators and action types with tests in ./store, assumes \`login\` as state namespace.`
+      '$0 create-saga --stateNamespace login',
+      `Creates saga, reducer, action creators and action types with tests in ./store, assumes \`login\` as state namespace.`
     )
     .example(
-      '$0 create-reducer --noActions',
-      `Creates reducer with tests in \`./store/reducer\`. Does not create action creators and action types.`
+      '$0 create-saga --noActions',
+      `Creates saga and reducer with tests in \`./store/reducer\`. Does not create action creators and action types.`
     )
     .example(
-      '$0 create-reducer --testsOnly',
+      '$0 create-saga --noReducer',
+      `Creates saga and actions with tests in \`./store/reducer\`. Does not create reducer.`
+    )
+    .example(
+      '$0 create-saga --testsOnly',
       `Creates reducer tests in \`./store/__tests__\`.`
     );
 
 const scaffold = argv => {
   const glob = argv.testsOnly
-    ? '../../../../templates/reducer/**/*.spec.js'
-    : '../../../../templates/reducer/**/*.js';
+    ? '../../../../templates/saga/**/*.spec.js'
+    : '../../../../templates/saga/**/*.js';
 
   return vfs
     .src(glob, { cwd: __dirname })
     .pipe(
       template({
         paths: { cwd: process.cwd(), cwdDir: basename(process.cwd()) },
-        reducer: {
+        saga: {
           ...argv,
           defaultActionTypes
         }
       })
     )
-    .pipe(vfs.dest(`./`, { cwd: process.cwd() }))
+    .pipe(vfs.dest(`./sagas/${argv.name}`, { cwd: process.cwd() }))
     .pipe(fancyFileLog());
 };
 
 exports.handler = argv => {
-  if (argv.testsOnly || argv.noActions) {
-    return scaffold(argv);
+  console.log(process.cwd());
+  const handlers = [scaffold];
+
+  if (!argv.noActions) {
+    handlers.push(actionsModule.handler);
+  }
+  if (!argv.noReducer) {
+    handlers.push(reducerModule.handler);
   }
 
-  return multistream([scaffold(argv), actionsModule.handler(argv)]);
+  return multistream(handlers.map(handler => handler(argv)));
 };

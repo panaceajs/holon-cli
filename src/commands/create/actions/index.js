@@ -6,6 +6,7 @@ const {
   toVariableName,
   toUpperCaseVariableName
 } = require('../../../lib/strings');
+const { defaultActionTypes } = require('../../../globals');
 
 exports.command = 'create-actions';
 
@@ -69,7 +70,7 @@ exports.handler = argv => {
           // name: toUpperCaseVariableName(argv.name),
           // props: argv.props.map(toVariableName),
           // state: argv.state || basename(process.cwd()),
-          defaultActionTypesNames: ['aRandomAction', 'anotherRandomAction']
+          defaultActionTypes
         }
       })
     )

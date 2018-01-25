@@ -62,7 +62,6 @@ exports.builder = yargs =>
     .strict();
 
 exports.handler = async argv => {
-  console.log(argv);
   const glob = argv.testsOnly
     ? '../../../../templates/component/**/*.spec.js'
     : '../../../../templates/component/**/*.js';

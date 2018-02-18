@@ -1,4 +1,4 @@
-const { highlight } = require('cli-highlight');
+const { highlightAuto } = require('emphasize');
 const through = require('through2');
 const { basename, relative, resolve } = require('path');
 const conflict = require('./conflict');
@@ -29,7 +29,7 @@ module.exports = function throughTemplate(target, options = {}) {
           )}`;
           info(
             `${colors.white(`✍️  ${relativeTarget}`)}
-${highlight(String(file.contents))}`
+${highlightAuto(String(file.contents)).value}`
           );
         } catch (err) {
           this.emit('error', new Error(err));

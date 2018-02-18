@@ -136,7 +136,6 @@ module.exports = function conflict(dest, opt = {}) {
   const { logger = log } = opt;
   /* eslint-disable func-names, default-case, no-shadow */
   return through2.obj(function(file, enc, cb) {
-    console.log('conflict');
     const newPath = path.resolve(opt.cwd || process.cwd(), dest, file.relative);
     const destPath = path.join(dest, file.relative);
 

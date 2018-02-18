@@ -1,8 +1,9 @@
 {
   "name": "@panacea/holon-cli",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "main": "index.js",
   "license": "MIT",
+  "repository": "github:panaceajs/holon-cli",
   "bin": {
     "holon": "bin/cli.js"
   },

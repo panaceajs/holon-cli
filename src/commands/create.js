@@ -1,6 +1,6 @@
 exports.command = 'create';
 
-exports.describe = 'AST create experiment';
+exports.describe = 'Create holon elements';
 
 exports.builder = yargs => yargs.commandDir('create-commands');
 exports.handler = () => {};

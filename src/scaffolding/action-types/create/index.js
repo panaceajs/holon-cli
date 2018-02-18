@@ -8,9 +8,8 @@ module.exports = ({
   logger = { ...defaultLogger },
   dryRun,
   actionTypes = {}
-}) => {
-  console.log(cwd);
-  return vfs
+}) =>
+  vfs
     .src('./templates/*.js', {
       cwd: __dirname
     })
@@ -23,4 +22,3 @@ module.exports = ({
     )
     .pipe(eslint({ fix: true }))
     .pipe(dest(`./action-types`, { cwd, logger, dryRun }));
-};

@@ -5,6 +5,13 @@ const conflict = require('./conflict');
 const colors = require('ansi-colors');
 const vfs = require('vinyl-fs');
 
+const compose = (s1, s2) => {
+  s1.pipe(s2);
+  s1.pipe = dest => s2.pipe(dest);
+  s1.unpipe = dest => s2.unpipe(dest);
+  return s1;
+};
+
 module.exports = function throughTemplate(target, options = {}) {
   const {
     cwd = process.cwd(),
@@ -34,5 +41,6 @@ ${highlight(String(file.contents))}`
       callback(null, file);
     });
   }
-  return conflict(target, options).pipe(vfs.dest(target, options));
+
+  return compose(conflict(target, options), vfs.dest(target, options));
 };

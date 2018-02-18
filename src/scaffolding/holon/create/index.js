@@ -43,7 +43,7 @@ module.exports = ({
     )
     .pipe(eslint({ fix: true }))
     .pipe(
-      dest(`./${holonName}`, {
+      dest(`./`, {
         cwd,
         logger,
         dryRun

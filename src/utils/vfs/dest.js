@@ -1,4 +1,4 @@
-const { highlight } = require('cardinal');
+const { highlight } = require('cli-highlight');
 const through = require('through2');
 const { basename, relative, resolve } = require('path');
 const conflict = require('./conflict');

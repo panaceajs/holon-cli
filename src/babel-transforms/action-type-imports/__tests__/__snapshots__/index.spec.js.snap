@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`holon-action-type-imports it should add action types import to targetPath: it should add action types import to targetPath 1`] = `
+"
+console.log('nothing going on here');
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { FOO } from '../../actions-types';
+console.log('nothing going on here');
+"
+`;
+
+exports[`holon-action-type-imports it should add action types import.: it should add action types import. 1`] = `
+"
+console.log('nothing going on here');
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { FOO } from '../action-types';
+console.log('nothing going on here');
+"
+`;

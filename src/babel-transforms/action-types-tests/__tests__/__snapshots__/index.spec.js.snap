@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`holon-action-types-tests it should add tests for action types: it should add tests for action types 1`] = `
+"
+describe('action types', () => {});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+describe('\`root\` action types', () => {
+  it('should export \`DO_SOMETHING\` type', () => {
+    expect(DO_SOMETHING).toBe('DO_SOMETHING');
+  });
+});
+"
+`;
+
+exports[`holon-action-types-tests it should complete tests for action types: it should complete tests for action types 1`] = `
+"
+describe('action types', () => {
+  it('should export \\\\\`EXISTING_ACTION\\\\\` type', () => {
+    // existing
+    expect(EXISTING_ACTION).toBe('EXISTING_ACTION');
+  });
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+describe('\`root\` action types', () => {
+  it('should export \\\\\`EXISTING_ACTION\\\\\` type', () => {
+    // existing
+    expect(EXISTING_ACTION).toBe('EXISTING_ACTION');
+  });
+  it('should export \`NON_EXISTING_ACTION\` type', () => {
+    expect(NON_EXISTING_ACTION).toBe('NON_EXISTING_ACTION');
+  });
+});
+"
+`;

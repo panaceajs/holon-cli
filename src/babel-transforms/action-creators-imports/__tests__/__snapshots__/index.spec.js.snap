@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`holon-action-creators-imports it should add action creator import to targetPath: it should add action creator import to targetPath 1`] = `
+"
+console.log('nothing going on here');
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { foo } from '../../actions';
+console.log('nothing going on here');
+"
+`;
+
+exports[`holon-action-creators-imports it should add action creator import.: it should add action creator import. 1`] = `
+"
+console.log('nothing going on here');
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { foo } from '../actions';
+console.log('nothing going on here');
+"
+`;
+
+exports[`holon-action-creators-imports it should update action creator import: it should update action creator import 1`] = `
+"
+import { existingAction } from '../actions';
+console.log('nothing going on here');
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { existingAction, nonExistingAction } from '../actions';
+console.log('nothing going on here');
+"
+`;

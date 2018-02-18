@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`holon-action-creator-tests it should add tests for action creators: it should add tests for action creators 1`] = `
+"
+describe('action creators', () => {});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+describe('\`root\` action creators', () => {
+  it('should export \`doSomething\` function', () => {
+    expect(doSomething).toBeDefined();
+    expect(doSomething()).toEqual({
+      type: DO_SOMETHING
+    });
+  });
+});
+"
+`;
+
+exports[`holon-action-creator-tests it should complete tests for action creators: it should complete tests for action creators 1`] = `
+"
+describe('action creators', () => {
+  it('should export \`existingAction\` function', () => {
+    // 
+    expect(existingAction).toBeDefined();
+    expect(existingAction()).toEqual({
+      type: EXISTING_ACTION
+    });
+  });
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+describe('\`root\` action creators', () => {
+  it('should export \`existingAction\` function', () => {
+    // 
+    expect(existingAction).toBeDefined();
+    expect(existingAction()).toEqual({
+      type: EXISTING_ACTION
+    });
+  });
+  it('should export \`nonExistingAction\` function', () => {
+    expect(nonExistingAction).toBeDefined();
+    expect(nonExistingAction()).toEqual({
+      type: NON_EXISTING_ACTION
+    });
+  });
+});
+"
+`;

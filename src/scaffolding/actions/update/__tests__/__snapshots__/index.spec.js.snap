@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`actions update should complete actions 1`] = `
+"
+--------------------------------------------------------------------------------
+// ./actions/index.js
+// Update
+--------------------------------------------------------------------------------
+
+import { createAction } from 'redux-actions';
+import { AN_ACTION } from '../action-types';
+
+export const anAction = createAction(AN_ACTION);
+
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+
+
+import { createAction } from 'redux-actions';
+import { AN_ACTION, ANOTHER_ACTION } from '../action-types';
+export const anAction = createAction(AN_ACTION);
+export const anotherAction = createAction(ANOTHER_ACTION);
+
+
+
+
+"
+`;
+
+exports[`actions update should create actions 1`] = `
+"
+--------------------------------------------------------------------------------
+// ./actions/index.js
+// Update
+--------------------------------------------------------------------------------
+
+import { createAction } from 'redux-actions';
+import { IGNORED_ACTION } from '../action-types';
+
+export const ignoredAction = createAction(IGNORED_ACTION);
+
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+
+
+import { createAction } from 'redux-actions';
+import { IGNORED_ACTION, AN_ACTION, ANOTHER_ACTION } from '../action-types';
+export const ignoredAction = createAction(IGNORED_ACTION);
+export const anAction = createAction(AN_ACTION);
+export const anotherAction = createAction(ANOTHER_ACTION);
+
+
+
+
+"
+`;

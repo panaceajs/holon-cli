@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`holon-reducer-tests it should add tests for cases: it should add tests for cases 1`] = `
+"
+describe('reducer', () => {});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+describe('\`root\` reducer', () => {
+  it('should handle \`DO_SOMETHING\`', () => {
+    const next = reducer(undefined, doSomething());
+    expect(next).toMatchSnapshot();
+    const next2 = reducer(next, doSomething('do-something-unit-test-payload'));
+    expect(next2).toMatchSnapshot();
+  });
+});
+"
+`;
+
+exports[`holon-reducer-tests it should update tests for cases: it should update tests for cases 1`] = `
+"
+describe('reducer', () => {
+  it('should handle \`DO_SOMETHING_EXISTING\`', () => {
+    const next = reducer(undefined, doSomethingExisting());
+    expect(next).toMatchSnapshot();
+    const next2 = reducer(next, doSomething('do-something-existing-unit-test-payload'));
+    expect(next2).toMatchSnapshot();
+  });
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+describe('\`root\` reducer', () => {
+  it('should handle \`DO_SOMETHING_EXISTING\`', () => {
+    const next = reducer(undefined, doSomethingExisting());
+    expect(next).toMatchSnapshot();
+    const next2 = reducer(next, doSomething('do-something-existing-unit-test-payload'));
+    expect(next2).toMatchSnapshot();
+  });
+  it('should handle \`DO_SOMETHING\`', () => {
+    const next = reducer(undefined, doSomething());
+    expect(next).toMatchSnapshot();
+    const next2 = reducer(next, doSomething('do-something-unit-test-payload'));
+    expect(next2).toMatchSnapshot();
+  });
+});
+"
+`;

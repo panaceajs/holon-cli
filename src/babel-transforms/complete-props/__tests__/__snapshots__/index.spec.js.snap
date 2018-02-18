@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`holon-complete-props it should add nothing when there is nothing to add.: it should add nothing when there is nothing to add. 1`] = `
+"
+import React from 'react';
+
+export default () => (<div>123</div>);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import React from 'react';
+
+export default (() => <div>123</div>);
+"
+`;
+
+exports[`holon-complete-props it should add prop functions.: it should add prop functions. 1`] = `
+"
+import React from 'react';
+
+export default () => (<div>123</div>);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import React from 'react';
+
+export default (({
+  doSomething = () => {},
+
+  doSomethingElse = () => {}
+
+}) => <div>123</div>);
+"
+`;
+
+exports[`holon-complete-props it should add props.: it should add props. 1`] = `
+"
+import React from 'react';
+
+export default () => (<div>123</div>);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import React from 'react';
+
+export default (({
+  first,
+  second
+}) => <div>123</div>);
+"
+`;
+
+exports[`holon-complete-props it should not overwrite existing prop functions.: it should not overwrite existing prop functions. 1`] = `
+"
+import React from 'react';
+
+export default ({ existing = 10, existingDoSomething = () => { /* yes we exist */ }}) => (<div>123</div>);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import React from 'react';
+
+export default (({ existing = 10, existingDoSomething = () => {/* yes we exist */} }) => <div>123</div>);
+"
+`;
+
+exports[`holon-complete-props it should not overwrite existing props.: it should not overwrite existing props. 1`] = `
+"
+import React from 'react';
+
+export default ({ existing = 10, existingDoSomething = () => { /* yes we exist */ }}) => (<div>123</div>);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import React from 'react';
+
+export default (({ existing = 10, existingDoSomething = () => {/* yes we exist */}, nonExisting
+}) => <div>123</div>);
+"
+`;
+
+exports[`holon-complete-props it should rename given props to variable names and remove duplicates.: it should rename given props to variable names and remove duplicates. 1`] = `
+"
+import React from 'react';
+
+export default () => (<div>123</div>);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import React from 'react';
+
+export default (({
+  thisIsAVar,
+  thisIsAnotherVar,
+  thisAlso,
+
+  existingDoSomething = () => {},
+
+  nonExistingDoSomething = () => {},
+
+  thisIsAVar1 = () => {}
+
+}) => <div>123</div>);
+"
+`;
+
+exports[`holon-complete-props it should set both props and prop functions.: it should set both props and prop functions. 1`] = `
+"
+import React from 'react';
+
+export default ({ existing = 10, existingDoSomething = () => { /* yes we exist */ }}) => (<div>123</div>);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import React from 'react';
+
+export default (({ existing = 10, existingDoSomething = () => {/* yes we exist */}, nonExisting,
+
+  nonExistingDoSomething = () => {}
+
+}) => <div>123</div>);
+"
+`;

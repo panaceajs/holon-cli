@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`holon-map-state-and-dispatch-to-props it should add map dispatch to props.: it should add map dispatch to props. 1`] = `
+"
+import { connect } from 'react-redux';
+const C = () => <div></div>;
+export default connect()(C);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { connect } from 'react-redux';
+
+const mapStateToProps = ({
+  first,
+  second
+}) => ({
+  first: first,
+  second: second
+});
+
+const mapDispatchToProps = dispatch => ({
+  firstAction: payload => {
+    dispatch(firstAction(payload));
+  },
+  secondAction: payload => {
+    dispatch(secondAction(payload));
+  }
+});
+
+const C = () => <div></div>;
+export default connect(mapStateToProps, mapDispatchToProps)(C);
+"
+`;
+
+exports[`holon-map-state-and-dispatch-to-props it should add map state to props.: it should add map state to props. 1`] = `
+"
+import { connect } from 'react-redux';
+const C = () => <div></div>;
+export default connect()(C);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { connect } from 'react-redux';
+
+const mapStateToProps = ({
+  first
+}) => ({
+  first: first
+});
+
+const C = () => <div></div>;
+export default connect(mapStateToProps, null)(C);
+"
+`;
+
+exports[`holon-map-state-and-dispatch-to-props it should leverage stateNamespace.: it should leverage stateNamespace. 1`] = `
+"
+import { connect } from 'react-redux';
+const C = () => <div></div>;
+export default connect()(C);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { connect } from 'react-redux';
+
+const mapStateToProps = ({
+  namespace: {
+    first,
+    second
+  }
+}) => ({
+  first: first,
+  second: second
+});
+
+const mapDispatchToProps = dispatch => ({
+  firstAction: payload => {
+    dispatch(firstAction(payload));
+  },
+  secondAction: payload => {
+    dispatch(secondAction(payload));
+  }
+});
+
+const C = () => <div></div>;
+export default connect(mapStateToProps, mapDispatchToProps)(C);
+"
+`;

@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`holon-reducer-cases it should add case and add type import.: it should add case and add type import. 1`] = `
+"
+export default ((state = {}, { type, payload, error }) => {
+  switch (type) {
+
+    default:
+      return state;
+  }
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+export default ((state = {}, { type, payload, error }) => {
+  switch (type) {
+    case FOO:
+      {
+        return { ...state,
+          foo: payload || \\"foo-value\\",
+          error
+        };
+      }
+
+    default:
+      return state;
+  }
+});
+"
+`;
+
+exports[`holon-reducer-cases it should update case and update type import.: it should update case and update type import. 1`] = `
+"
+import { DO_SOMETHING } from '../../action-types';
+
+export default ((state = {}, { type, payload, error }) => {
+  switch (type) {
+    case DO_SOMETHING: {
+      // should remain untouched
+      return { ...state,
+        SOME_VALUE: payload || null,
+        error
+      };
+    }
+    default:
+      return state;
+  }
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { DO_SOMETHING } from '../../action-types';
+
+export default ((state = {}, { type, payload, error }) => {
+  switch (type) {
+    case DO_SOMETHING:
+      {
+        // should remain untouched
+        return { ...state,
+          SOME_VALUE: payload || null,
+          error
+        };
+      }
+
+    case FOO:
+      {
+        return { ...state,
+          foo: payload || 'foo-value',
+          error
+        };
+      }
+
+    default:
+      return state;
+  }
+});
+"
+`;

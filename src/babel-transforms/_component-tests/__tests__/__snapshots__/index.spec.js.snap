@@ -1,0 +1,461 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`holon-component-tests it should add import createMount if describe call is present and withStyles is truthy: it should add import createMount if describe call is present and withStyles is truthy 1`] = `
+"
+describe('description', () => {});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { createMount } from 'material-ui/test-utils';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import theme from 'shared/themes';
+describe('description', () => {
+  let mount;
+  beforeEach(() => {
+    mount = createMount();
+  });
+});
+"
+`;
+
+exports[`holon-component-tests it should add import shallow if describe call is present, should add let mount and beforeEach(): it should add import shallow if describe call is present, should add let mount and beforeEach() 1`] = `
+"
+describe('description', () => {});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { shallow } from 'enzyme';
+describe('description', () => {});
+"
+`;
+
+exports[`holon-component-tests it should add tests for function props and withStyles is truthy: it should add tests for function props and withStyles is truthy 1`] = `
+"
+describe('description', () => {
+  beforeEach(() => {
+    console.log('this beforeEach block should not be removed by transform');
+  });
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { createMount } from 'material-ui/test-utils';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import theme from 'shared/themes';
+describe('description', () => {
+  let mount;
+
+  beforeEach(() => {
+    mount = createMount();
+
+    console.log('this beforeEach block should not be removed by transform');
+  });
+  it('should set \`doSomething\` prop properly', () => {
+    const doSomethingValue = function doSomethingFn() {};
+
+    const wrapper = mount(<MuiThemeProvider theme={theme}><ExampleComponent doSomething={doSomethingValue}></ExampleComponent></MuiThemeProvider>);
+    expect(wrapper).toMatchSnapshot();
+  });
+  it('should set \`doSomethingElse\` prop properly', () => {
+    const doSomethingElseValue = function doSomethingElseFn() {};
+
+    const wrapper = mount(<MuiThemeProvider theme={theme}><ExampleComponent doSomethingElse={doSomethingElseValue}></ExampleComponent></MuiThemeProvider>);
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+"
+`;
+
+exports[`holon-component-tests it should add tests for function props: it should add tests for function props 1`] = `
+"
+describe('description', () => {
+  beforeEach(() => {
+    console.log('this beforeEach block should not be removed by transform');
+  });
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { shallow } from 'enzyme';
+describe('description', () => {
+  beforeEach(() => {
+    console.log('this beforeEach block should not be removed by transform');
+  });
+  it('should set \`doSomething\` prop properly', () => {
+    const doSomethingValue = function doSomethingFn() {};
+
+    const wrapper = shallow(<ExampleComponent doSomething={doSomethingValue}></ExampleComponent>, {
+      dive: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+  it('should set \`doSomethingElse\` prop properly', () => {
+    const doSomethingElseValue = function doSomethingElseFn() {};
+
+    const wrapper = shallow(<ExampleComponent doSomethingElse={doSomethingElseValue}></ExampleComponent>, {
+      dive: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+"
+`;
+
+exports[`holon-component-tests it should add tests for props and withStyles is truthy: it should add tests for props and withStyles is truthy 1`] = `
+"
+describe('description', () => {
+  beforeEach(() => {
+    console.log('this beforeEach block should not be removed by transform');
+  });
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { createMount } from 'material-ui/test-utils';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import theme from 'shared/themes';
+describe('description', () => {
+  let mount;
+
+  beforeEach(() => {
+    mount = createMount();
+
+    console.log('this beforeEach block should not be removed by transform');
+  });
+  it('should set \`first\` prop properly', () => {
+    const firstValue = 'first value';
+    const wrapper = mount(<MuiThemeProvider theme={theme}><ExampleComponent first={firstValue}></ExampleComponent></MuiThemeProvider>);
+    expect(wrapper).toMatchSnapshot();
+  });
+  it('should set \`second\` prop properly', () => {
+    const secondValue = 'second value';
+    const wrapper = mount(<MuiThemeProvider theme={theme}><ExampleComponent second={secondValue}></ExampleComponent></MuiThemeProvider>);
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+"
+`;
+
+exports[`holon-component-tests it should add tests for props: it should add tests for props 1`] = `
+"
+describe('description', () => {
+  beforeEach(() => {
+    console.log('this beforeEach block should not be removed by transform');
+  });
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { shallow } from 'enzyme';
+describe('description', () => {
+  beforeEach(() => {
+    console.log('this beforeEach block should not be removed by transform');
+  });
+  it('should set \`first\` prop properly', () => {
+    const firstValue = 'first value';
+    const wrapper = shallow(<ExampleComponent first={firstValue}></ExampleComponent>, {
+      dive: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+  it('should set \`second\` prop properly', () => {
+    const secondValue = 'second value';
+    const wrapper = shallow(<ExampleComponent second={secondValue}></ExampleComponent>, {
+      dive: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+"
+`;
+
+exports[`holon-component-tests it should add tests for props: it should add tests for props 2`] = `
+"
+describe('description', () => {
+  beforeEach(() => {
+    console.log('this beforeEach block should not be removed by transform');
+  });
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { shallow } from 'enzyme';
+describe('description', () => {
+  beforeEach(() => {
+    console.log('this beforeEach block should not be removed by transform');
+  });
+  it('should set \`first\` prop properly', () => {
+    const firstValue = 'first value';
+    const wrapper = shallow(<ExampleComponent first={firstValue}></ExampleComponent>, {
+      dive: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+  it('should set \`second\` prop properly', () => {
+    const secondValue = 'second value';
+    const wrapper = shallow(<ExampleComponent second={secondValue}></ExampleComponent>, {
+      dive: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+"
+`;
+
+exports[`holon-component-tests it should complete tests for function props and withStyles is truthy: it should complete tests for function props and withStyles is truthy 1`] = `
+"
+describe('description', () => {
+  it('should set \`existing\` prop properly', () => {
+    const existingValue = 'existing value';
+    const wrapper = shallow(<ExampleComponent existing={existingValue}></ExampleComponent>, {
+      dive: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should set \`existingAction\` prop properly', () => {
+    const existingActionValue = function existingActionFn() {};
+
+    const wrapper = shallow(<ExampleComponent existingAction={existingActionValue}></ExampleComponent>, {
+      dive: true, keep: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { createMount } from 'material-ui/test-utils';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import theme from 'shared/themes';
+describe('description', () => {
+  let mount;
+  beforeEach(() => {
+    mount = createMount();
+  });
+
+  it('should set \`existing\` prop properly', () => {
+    const existingValue = 'existing value';
+    const wrapper = mount(<MuiThemeProvider theme={theme}><ExampleComponent existing={existingValue}></ExampleComponent></MuiThemeProvider>);
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should set \`existingAction\` prop properly', () => {
+    const existingActionValue = function existingActionFn() {};
+
+    const wrapper = mount(<MuiThemeProvider theme={theme}><ExampleComponent existingAction={existingActionValue}></ExampleComponent></MuiThemeProvider>, { keep: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+  it('should set \`nonExistingAction\` prop properly', () => {
+    const nonExistingActionValue = function nonExistingActionFn() {};
+
+    const wrapper = mount(<MuiThemeProvider theme={theme}><ExampleComponent nonExistingAction={nonExistingActionValue}></ExampleComponent></MuiThemeProvider>);
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+"
+`;
+
+exports[`holon-component-tests it should complete tests for function props: it should complete tests for function props 1`] = `
+"
+describe('description', () => {
+  it('should set \`existing\` prop properly', () => {
+    const existingValue = 'existing value';
+    const wrapper = shallow(<ExampleComponent existing={existingValue}></ExampleComponent>, {
+      dive: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should set \`existingAction\` prop properly', () => {
+    const existingActionValue = function existingActionFn() {};
+
+    const wrapper = shallow(<ExampleComponent existingAction={existingActionValue}></ExampleComponent>, {
+      dive: true, keep: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { shallow } from 'enzyme';
+describe('description', () => {
+  it('should set \`existing\` prop properly', () => {
+    const existingValue = 'existing value';
+    const wrapper = shallow(<ExampleComponent existing={existingValue}></ExampleComponent>, {
+      dive: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should set \`existingAction\` prop properly', () => {
+    const existingActionValue = function existingActionFn() {};
+
+    const wrapper = shallow(<ExampleComponent existingAction={existingActionValue}></ExampleComponent>, {
+      dive: true, keep: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+  it('should set \`nonExistingAction\` prop properly', () => {
+    const nonExistingActionValue = function nonExistingActionFn() {};
+
+    const wrapper = shallow(<ExampleComponent nonExistingAction={nonExistingActionValue}></ExampleComponent>, {
+      dive: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+"
+`;
+
+exports[`holon-component-tests it should complete tests for props and withStyles is truthy: it should complete tests for props and withStyles is truthy 1`] = `
+"
+describe('description', () => {
+  it('should set \`existing\` prop properly', () => {
+    const existingValue = 'existing value';
+    const wrapper = shallow(<ExampleComponent existing={existingValue}></ExampleComponent>, {
+      dive: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should set \`existingAction\` prop properly', () => {
+    const existingActionValue = function existingActionFn() {};
+
+    const wrapper = shallow(<ExampleComponent existingAction={existingActionValue}></ExampleComponent>, {
+      dive: true, keep: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { createMount } from 'material-ui/test-utils';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import theme from 'shared/themes';
+describe('description', () => {
+  let mount;
+  beforeEach(() => {
+    mount = createMount();
+  });
+
+  it('should set \`existing\` prop properly', () => {
+    const existingValue = 'existing value';
+    const wrapper = mount(<MuiThemeProvider theme={theme}><ExampleComponent existing={existingValue}></ExampleComponent></MuiThemeProvider>);
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should set \`existingAction\` prop properly', () => {
+    const existingActionValue = function existingActionFn() {};
+
+    const wrapper = mount(<MuiThemeProvider theme={theme}><ExampleComponent existingAction={existingActionValue}></ExampleComponent></MuiThemeProvider>, { keep: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+  it('should set \`nonExisting\` prop properly', () => {
+    const nonExistingValue = 'nonExisting value';
+    const wrapper = mount(<MuiThemeProvider theme={theme}><ExampleComponent nonExisting={nonExistingValue}></ExampleComponent></MuiThemeProvider>);
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+"
+`;
+
+exports[`holon-component-tests it should complete tests for props: it should complete tests for props 1`] = `
+"
+describe('description', () => {
+  it('should set \`existing\` prop properly', () => {
+    const existingValue = 'existing value';
+    const wrapper = shallow(<ExampleComponent existing={existingValue}></ExampleComponent>, {
+      dive: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should set \`existingAction\` prop properly', () => {
+    const existingActionValue = function existingActionFn() {};
+
+    const wrapper = shallow(<ExampleComponent existingAction={existingActionValue}></ExampleComponent>, {
+      dive: true, keep: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { shallow } from 'enzyme';
+describe('description', () => {
+  it('should set \`existing\` prop properly', () => {
+    const existingValue = 'existing value';
+    const wrapper = shallow(<ExampleComponent existing={existingValue}></ExampleComponent>, {
+      dive: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should set \`existingAction\` prop properly', () => {
+    const existingActionValue = function existingActionFn() {};
+
+    const wrapper = shallow(<ExampleComponent existingAction={existingActionValue}></ExampleComponent>, {
+      dive: true, keep: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+  it('should set \`nonExisting\` prop properly', () => {
+    const nonExistingValue = 'nonExisting value';
+    const wrapper = shallow(<ExampleComponent nonExisting={nonExistingValue}></ExampleComponent>, {
+      dive: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+"
+`;
+
+exports[`holon-component-tests it should not remove existing beforeEach() call: it should not remove existing beforeEach() call 1`] = `
+"
+describe('description', () => {
+  beforeEach(() => {
+    console.log('this beforeEach block should not be removed by transform');
+  });
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { shallow } from 'enzyme';
+describe('description', () => {
+  beforeEach(() => {
+    console.log('this beforeEach block should not be removed by transform');
+  });
+});
+"
+`;
+
+exports[`holon-component-tests it should not replace existing beforeEach() call: it should not replace existing beforeEach() call 1`] = `
+"
+describe('description', () => {
+  beforeEach(() => {
+    console.log('this beforeEach block should not be removed by transform');
+  });
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { createMount } from 'material-ui/test-utils';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import theme from 'shared/themes';
+describe('description', () => {
+  let mount;
+
+  beforeEach(() => {
+    mount = createMount();
+
+    console.log('this beforeEach block should not be removed by transform');
+  });
+});
+"
+`;

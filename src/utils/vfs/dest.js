@@ -3,6 +3,7 @@ const through = require('through2');
 const { basename, relative, resolve } = require('path');
 const conflict = require('./conflict');
 const colors = require('ansi-colors');
+const vfs = require('vinyl-fs');
 
 module.exports = function throughTemplate(target, options = {}) {
   const {
@@ -33,5 +34,5 @@ ${highlight(String(file.contents))}`
       callback(null, file);
     });
   }
-  return conflict(target, options);
+  return conflict(target, options).pipe(vfs.dest(target, options));
 };

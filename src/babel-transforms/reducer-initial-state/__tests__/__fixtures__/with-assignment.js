@@ -1,7 +1,5 @@
 export default (
   state = {
-    existingNamespace: {
-      existing: 'existing'
-    }
+    existing: 'existing'
   }
 ) => {};

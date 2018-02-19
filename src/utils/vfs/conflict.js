@@ -1,3 +1,4 @@
+const chalk = require('chalk');
 const through2 = require('through2');
 const inquirer = require('inquirer');
 const PluginError = require('plugin-error');
@@ -8,6 +9,8 @@ const pkg = require('../../../package');
 const colors = require('ansi-colors');
 const defaultLogger = require('../logger');
 
+const addedColor = chalk.bgHex('#1f8181').white.bold;
+const removedColor = chalk.bgHex('#F2431D').black.bold;
 const log = {
   ...defaultLogger
 };
@@ -81,11 +84,11 @@ function logFile({ message, file, stat, extraText, logger, destPath }) {
 
 function colorFromPart(part) {
   if (part.added) {
-    return 'bggreen';
+    return addedColor;
   } else if (part.removed) {
-    return 'bgmagenta';
+    return removedColor;
   }
-  return 'grey';
+  return colors.grey;
 }
 
 function formatPart(part, i) {
@@ -94,7 +97,7 @@ function formatPart(part, i) {
     (!i ? indent : '') +
     part.value
       .split('\n')
-      .map(line => colors[colorFromPart(part)](colors.white(line)))
+      .map(line => colorFromPart(part)(line))
       .join(`\n${indent}`)
   );
 }
@@ -107,7 +110,7 @@ function diffFiles(newFile, oldFilePath, logger) {
     const content = fs.readFileSync(oldFilePath, 'utf8');
     const differences = diff.diffLines(content, String(newFile.contents));
     logger.info(
-      `File differences: ${colors.bggreen('added')} ${colors.bgmagenta(
+      `File differences: ${addedColor('added')} ${removedColor(
         'removed'
       )}\n\n${differences.map(formatPart).join('')}`
     );

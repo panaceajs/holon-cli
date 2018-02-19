@@ -50,8 +50,4 @@ exports.builder = yargs =>
       actionTypes: toActionStates
     });
 
-exports.handler = argv => {
-  console.log('hello');
-
-  return createContainerChain(argv);
-};
+exports.handler = argv => createContainerChain(argv);

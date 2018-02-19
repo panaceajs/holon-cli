@@ -4,6 +4,7 @@ const { basename, relative, resolve } = require('path');
 const conflict = require('./conflict');
 const colors = require('ansi-colors');
 const vfs = require('vinyl-fs');
+const chalk = require('chalk');
 
 const compose = (s1, s2) => {
   s1.pipe(s2);
@@ -27,9 +28,23 @@ module.exports = function throughTemplate(target, options = {}) {
             cwd,
             resolve(target, basename(file.path))
           )}`;
-          info(
+          console.log(
             `${colors.white(`✍️  ${relativeTarget}`)}
-${highlightAuto(String(file.contents)).value}`
+${
+              highlightAuto(String(file.contents), {
+                attr: chalk.hex('#1f8181'),
+                keyword: chalk.hex('#1f8181'),
+                'function keyword': chalk.hex('#f2bc79'),
+                name: chalk.hex('#f2bc79'),
+                'function title': chalk.hex('#f28972'),
+                comment: chalk.hex('#7a7267'),
+                doctag: chalk.hex('#a0988e'),
+                string: chalk.hex('#f8bb39'),
+                symbol: chalk.hex('#f8bb39'),
+                literal: chalk.hex('#f8bb39'),
+                number: chalk.hex('#f8bb39')
+              }).value
+            }`
           );
         } catch (err) {
           this.emit('error', new Error(err));

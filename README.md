@@ -13,13 +13,13 @@ Utility library for creating scalable react/redux/saga applications.
 If you are using npm:
 
 ```
-$ npm install -g @panacea/holon-cli
+$ npm install -g @panacea/holon-cli@next
 ```
 
 If you are using yarn:
 
 ```
-$ yarn global add @panacea/holon-cli 
+$ yarn global add @panacea/holon-cli@next
 ```
 
 

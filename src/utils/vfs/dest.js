@@ -28,7 +28,7 @@ module.exports = function throughTemplate(target, options = {}) {
             cwd,
             resolve(target, basename(file.path))
           )}`;
-          console.log(
+          info(
             `${colors.white(`✍️  ${relativeTarget}`)}
 ${
               highlightAuto(String(file.contents), {

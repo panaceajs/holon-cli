@@ -1,5 +1,4 @@
 const vfs = require('vinyl-fs');
-const { basename } = require('path');
 const eslint = require('gulp-eslint');
 const defaultLogger = require('../../../utils/logger');
 const { babel, dest } = require('../../../utils/vfs');
@@ -12,8 +11,7 @@ module.exports = ({
   cwd = process.cwd(),
   logger = { ...defaultLogger },
   dryRun,
-  actionTypes,
-  stateNamespace = basename(cwd)
+  actionTypes
 }) =>
   vfs
     .src('store/*.js', { cwd })
@@ -28,10 +26,7 @@ module.exports = ({
               targetPath: '../action-types'
             }
           ],
-          [
-            reducerInitialState,
-            { actionTypes: actionTypes || {}, stateNamespace }
-          ],
+          [reducerInitialState, { actionTypes: actionTypes || {} }],
           [reducerCases, { actionTypes: actionTypes || {} }]
         ]
       })

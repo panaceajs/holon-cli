@@ -199,7 +199,7 @@ const findExportReactComponentIdentifier = path => {
       const declaration = innerPath.get('declaration');
       if (declaration) {
         if (types.isIdentifier(declaration)) {
-          const name = declaration.node.name;
+          const { name } = declaration.node;
           // ok we have an identifier
           // const scope = path.get('scope');
           if (path.scope.bindings) {
@@ -356,11 +356,11 @@ const findOrCreateParams = path => {
   if (functionExpression) {
     let params = functionExpression.get('params');
     if (params.length) {
-      propsObjectPattern = params[0];
+      [propsObjectPattern] = params;
     } else {
       functionExpression.pushContainer('params', types.objectPattern([]));
       params = functionExpression.get('params');
-      propsObjectPattern = params[0];
+      [propsObjectPattern] = params;
     }
   }
 
@@ -372,7 +372,7 @@ const findParams = path => {
   if (functionExpression) {
     const params = functionExpression.get('params');
     if (params.length) {
-      propsObjectPattern = params[0];
+      [propsObjectPattern] = params;
     }
   }
 

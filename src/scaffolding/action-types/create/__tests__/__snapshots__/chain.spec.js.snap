@@ -70,28 +70,90 @@ describe('\`test\` action creators', () => {
 
 
 --------------------------------------------------------------------------------
-// ./actions/__tests__/index.spec.js
+// ./actions/index.js
 // Create
 --------------------------------------------------------------------------------
 
-import { AN_ACTION, ANOTHER_ACTION } from '../../action-types';
-import { anAction, anotherAction } from '../';
+import { createAction } from 'redux-actions';
+import { AN_ACTION, ANOTHER_ACTION } from '../action-types';
 
-describe('\`test\` action creators', () => {
-  it('should export \`anAction\` function', () => {
-    expect(anAction).toBeDefined();
-    expect(anAction()).toEqual({
-      type: AN_ACTION
-    });
+export const anAction = createAction(AN_ACTION);
+export const anotherAction = createAction(ANOTHER_ACTION);
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------
+// ./store/__tests__/reducer.spec.js
+// Create
+--------------------------------------------------------------------------------
+
+import reducer from '../reducer';
+import { anAction, anotherAction } from '../../actions';
+
+describe('\`test\` reducer', () => {
+  it('should exist', () => {
+    expect(reducer).toBeDefined();
   });
 
-  it('should export \`anotherAction\` function', () => {
-    expect(anotherAction).toBeDefined();
-    expect(anotherAction()).toEqual({
-      type: ANOTHER_ACTION
-    });
+  it('should return default state', () => {
+    const next = reducer(undefined, { type: 'UNKNOWN_TYPE' });
+    expect(next).toMatchSnapshot();
+  });
+
+  it('should handle \`AN_ACTION\`', () => {
+    const next = reducer(undefined, anAction());
+    expect(next).toMatchSnapshot();
+    const next2 = reducer(next, anAction('anAction-value'));
+    expect(next2).toMatchSnapshot();
+  });
+
+  it('should handle \`ANOTHER_ACTION\`', () => {
+    const next = reducer(undefined, anotherAction());
+    expect(next).toMatchSnapshot();
+    const next2 = reducer(next, anotherAction('anotherAction-value'));
+    expect(next2).toMatchSnapshot();
   });
 });
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------
+// ./store/reducer.js
+// Create
+--------------------------------------------------------------------------------
+
+import { AN_ACTION, ANOTHER_ACTION } from '../action-types';
+
+export default (
+  state = {
+    anAction: 'anAction-initial-value',
+    anotherAction: 'anotherAction-initial-value'
+  },
+  { type, payload, error }
+) => {
+  switch (type) {
+    case AN_ACTION: {
+      return { ...state, anAction: payload || 'anAction-value', error };
+    }
+    case ANOTHER_ACTION: {
+      return {
+        ...state,
+        anotherAction: payload || 'anotherAction-value',
+        error
+      };
+    }
+    default:
+      return state;
+  }
+};
 
 
 
@@ -170,28 +232,90 @@ describe('\`test\` action creators', () => {
 
 
 --------------------------------------------------------------------------------
-// ./actions/__tests__/index.spec.js
+// ./actions/index.js
 // Create
 --------------------------------------------------------------------------------
 
-import { AN_ACTION, ANOTHER_ACTION } from '../../action-types';
-import { anAction, anotherAction } from '../';
+import { createAction } from 'redux-actions';
+import { AN_ACTION, ANOTHER_ACTION } from '../action-types';
 
-describe('\`test\` action creators', () => {
-  it('should export \`anAction\` function', () => {
-    expect(anAction).toBeDefined();
-    expect(anAction()).toEqual({
-      type: AN_ACTION
-    });
+export const anAction = createAction(AN_ACTION);
+export const anotherAction = createAction(ANOTHER_ACTION);
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------
+// ./store/__tests__/reducer.spec.js
+// Create
+--------------------------------------------------------------------------------
+
+import reducer from '../reducer';
+import { anAction, anotherAction } from '../../actions';
+
+describe('\`test\` reducer', () => {
+  it('should exist', () => {
+    expect(reducer).toBeDefined();
   });
 
-  it('should export \`anotherAction\` function', () => {
-    expect(anotherAction).toBeDefined();
-    expect(anotherAction()).toEqual({
-      type: ANOTHER_ACTION
-    });
+  it('should return default state', () => {
+    const next = reducer(undefined, { type: 'UNKNOWN_TYPE' });
+    expect(next).toMatchSnapshot();
+  });
+
+  it('should handle \`AN_ACTION\`', () => {
+    const next = reducer(undefined, anAction());
+    expect(next).toMatchSnapshot();
+    const next2 = reducer(next, anAction('anAction-value'));
+    expect(next2).toMatchSnapshot();
+  });
+
+  it('should handle \`ANOTHER_ACTION\`', () => {
+    const next = reducer(undefined, anotherAction());
+    expect(next).toMatchSnapshot();
+    const next2 = reducer(next, anotherAction('anotherAction-value'));
+    expect(next2).toMatchSnapshot();
   });
 });
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------
+// ./store/reducer.js
+// Create
+--------------------------------------------------------------------------------
+
+import { AN_ACTION, ANOTHER_ACTION } from '../action-types';
+
+export default (
+  state = {
+    anAction: 'anAction-initial-value',
+    anotherAction: 'anotherAction-initial-value'
+  },
+  { type, payload, error }
+) => {
+  switch (type) {
+    case AN_ACTION: {
+      return { ...state, anAction: payload || 'anAction-value', error };
+    }
+    case ANOTHER_ACTION: {
+      return {
+        ...state,
+        anotherAction: payload || 'anotherAction-value',
+        error
+      };
+    }
+    default:
+      return state;
+  }
+};
 
 
 

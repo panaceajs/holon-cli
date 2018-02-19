@@ -1,6 +1,6 @@
 const constantCase = require('constant-case');
 
-module.exports = ({ reducer: { actionTypes = {}, stateNamespace } }) => {
+module.exports = ({ reducer: { actionTypes = {} } }) => {
   const actionCreators = Object.keys(actionTypes);
 
   return `import { ${actionCreators
@@ -8,16 +8,14 @@ module.exports = ({ reducer: { actionTypes = {}, stateNamespace } }) => {
     .join(', ')} } from '../action-types';
 export default (
   state = {
-    ${stateNamespace}: {
-      ${actionCreators
-        .map(
-          actionCreator =>
-            `    ${actionTypes[actionCreator] || actionCreator}: '${actionTypes[
-              actionCreator
-            ] || actionCreator}-initial-value'`
-        )
-        .join(',\n')}
-    }
+    ${actionCreators
+      .map(
+        actionCreator =>
+          `    ${actionTypes[actionCreator] || actionCreator}: '${actionTypes[
+            actionCreator
+          ] || actionCreator}-initial-value'`
+      )
+      .join(',\n')}
   },
   { type, payload, error }
 ) => {

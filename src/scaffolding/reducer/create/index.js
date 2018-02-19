@@ -8,8 +8,7 @@ module.exports = ({
   cwd = process.cwd(),
   logger = { ...defaultLogger },
   dryRun,
-  actionTypes = {},
-  stateNamespace = basename(cwd)
+  actionTypes = {}
 }) =>
   vfs
     .src('./templates/*.js', {
@@ -19,8 +18,7 @@ module.exports = ({
       template({
         paths: { cwd, cwdDir: basename(cwd) },
         reducer: {
-          actionTypes,
-          stateNamespace
+          actionTypes
         }
       })
     )

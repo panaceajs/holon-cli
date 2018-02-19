@@ -51,6 +51,7 @@ module.exports = argv => {
     }
     tasks.push(createOrUpdateReducerTests(argv));
   }
+
   if (magic || withComponent) {
     if (!testsOnly) {
       tasks.push(createOrUpdateComponent(argv));

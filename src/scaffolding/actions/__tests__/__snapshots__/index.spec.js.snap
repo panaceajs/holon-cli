@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`actions should add import action types statmenett\` 1`] = `
+"
+--------------------------------------------------------------------------------
+// ./actions/index.js
+// Update
+--------------------------------------------------------------------------------
+
+import Stuff from 'stuff';
+
+export default Stuff;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+
+
+import Stuff from 'stuff';
+import { createAction } from \\"redux-actions\\";
+import { AN_ACTION, ANOTHER_ACTION } from \\"../action-types\\";
+export default Stuff;
+export const anAction = createAction(AN_ACTION);
+export const anotherAction = createAction(ANOTHER_ACTION);
+
+
+"
+`;
+
+exports[`actions should add import action types statmenett\` 2`] = `
+"
+--------------------------------------------------------------------------------
+// ./actions/index.js
+// Update
+--------------------------------------------------------------------------------
+
+import Stuff from 'stuff';
+import { createAction } from \\"redux-actions\\";
+import { AN_ACTION, ANOTHER_ACTION_WHICH_SHOULD_NOT_BE_OVERRIDDEN } from \\"../action-types\\";
+export default Stuff;
+export const anAction = createAction(AN_ACTION);
+export const existingAction = createAction(ANOTHER_ACTION_WHICH_SHOULD_NOT_BE_OVERRIDDEN);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+
+
+import Stuff from 'stuff';
+import { createAction } from \\"redux-actions\\";
+import { AN_ACTION, ANOTHER_ACTION_WHICH_SHOULD_NOT_BE_OVERRIDDEN, EXISTING_ACTION } from \\"../action-types\\";
+export default Stuff;
+export const anAction = createAction(AN_ACTION);
+export const existingAction = createAction(ANOTHER_ACTION_WHICH_SHOULD_NOT_BE_OVERRIDDEN);
+export const existingAction = createAction(EXISTING_ACTION);
+
+
+"
+`;
+
+exports[`actions should create action types in \`actions/index.js\` 1`] = `
+"
+--------------------------------------------------------------------------------
+// ./actions/index.js
+// Create
+--------------------------------------------------------------------------------
+
+import { createAction } from 'redux-actions';
+import { AN_ACTION, ANOTHER_ACTION } from '../action-types';
+
+export const anAction = createAction(AN_ACTION);
+export const anotherAction = createAction(ANOTHER_ACTION);
+
+
+
+"
+`;

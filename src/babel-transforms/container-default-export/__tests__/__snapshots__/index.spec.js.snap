@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`holon-container-default-export it should add a default export.: it should add a default export. 1`] = `
+"
+import { DO_SOMETHING } from '../../action-types';
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { DO_SOMETHING } from '../../action-types';
+export default connect()(Example);
+"
+`;

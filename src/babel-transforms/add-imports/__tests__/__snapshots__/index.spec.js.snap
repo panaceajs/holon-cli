@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`holon-add-import it should add action creator import.: it should add action creator import. 1`] = `
+"
+console.log('nothing going on here');
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import all, { first, second } from 'foo';
+console.log('nothing going on here');
+"
+`;

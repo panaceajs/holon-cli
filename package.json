@@ -37,6 +37,7 @@
     "eslint-plugin-react": "^7.1.0",
     "file-exists": "^5.0.1",
     "gulp-eslint": "^4.0.2",
+    "gulp-file": "^0.4.0",
     "gulp-tap": "^1.0.1",
     "inquirer": "^5.0.0",
     "jest-diff": "^22.1.0",

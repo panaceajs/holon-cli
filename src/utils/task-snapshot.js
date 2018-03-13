@@ -17,13 +17,13 @@ module.exports = (task, options = {}) => {
               .map(file => {
                 let previous;
                 let existingContents = '';
-
                 const newContents = String(file.contents);
                 const fileExists = existsSync(file.path);
                 if (fileExists) {
                   existingContents = readFileSync(file.path, 'utf8');
                   previous = existingContents;
                 }
+
                 return `
 --------------------------------------------------------------------------------
 // ./${relative(cwd, file.path)}
@@ -41,8 +41,6 @@ ${previous}
                     : ``
                 }
 ${newContents}
-
-
 
 
 `;

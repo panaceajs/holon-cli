@@ -35,7 +35,6 @@ module.exports = ({ types: t }) => ({
               const actionType = testName
                 .replace('should handle `', '')
                 .replace('`', '');
-              console.log(actionType);
               if (actionType) {
                 cache[actionType] = innerPath;
               }

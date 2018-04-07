@@ -1,6 +1,7 @@
 const { resolve } = require('path');
 const processStreams = require('../../utils/stream-sequence');
 const reducerTransform = require('./');
+const reducerTestsTransform = require('../reducer-tests');
 const actionsTransform = require('../actions');
 const actionsTestsTransform = require('../actions-tests');
 const actionTypesTransform = require('../action-types');
@@ -8,6 +9,7 @@ const actionTypesTestsTransform = require('../action-types-tests');
 const componentTransform = require('../component');
 const componentTestsTransform = require('../component-tests');
 const containerTransform = require('../container');
+const containerTestsTransform = require('../container-tests');
 
 module.exports = argv => {
   const {
@@ -32,7 +34,7 @@ module.exports = argv => {
   if (!testsOnly) {
     tasks.push(reducerTransform);
   }
-  // tasks.push(reducerTransformTests);
+  tasks.push(reducerTestsTransform);
 
   if (magic || withActionTypes) {
     if (!testsOnly) {
@@ -58,7 +60,7 @@ module.exports = argv => {
     if (!testsOnly) {
       tasks.push(containerTransform);
     }
-    // tasks.push(actionTypesTransformTests);
+    tasks.push(containerTestsTransform);
   }
 
   return processStreams(options, tasks);

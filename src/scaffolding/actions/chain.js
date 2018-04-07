@@ -5,7 +5,9 @@ const actionsTestsTransform = require('../actions-tests');
 const actionTypesTransform = require('../action-types');
 const actionTypesTestsTransform = require('../action-types-tests');
 const reducerTransform = require('../reducer');
+const reducerTestsTransform = require('../reducer-tests');
 const containerTransform = require('../container');
+const containerTestsTransform = require('../container-tests');
 const componentTransform = require('../component');
 const componentTestsTransform = require('../component-tests');
 
@@ -44,14 +46,14 @@ module.exports = argv => {
     if (!testsOnly) {
       tasks.push(reducerTransform);
     }
-    //   tasks.push(createOrUpdateReducerTests(argv));
+    tasks.push(reducerTestsTransform);
   }
 
   if (magic || withContainer) {
     if (!testsOnly) {
       tasks.push(containerTransform);
     }
-    //   tasks.push(createOrUpdateReducerTests(argv));
+    tasks.push(containerTestsTransform);
   }
 
   if (magic || withComponent) {

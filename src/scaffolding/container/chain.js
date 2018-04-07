@@ -6,8 +6,8 @@ const actionsTransform = require('../actions');
 const actionsTestsTransform = require('../actions-tests');
 const actionTypesTransform = require('../action-types');
 const actionTypesTestsTransform = require('../action-types-tests');
-
 const reducerTransform = require('../reducer');
+const reducerTestsTransform = require('../reducer-tests');
 const componentTransform = require('../component');
 const componentTestsTransform = require('../component-tests');
 
@@ -49,7 +49,7 @@ module.exports = argv => {
     if (!testsOnly) {
       tasks.push(reducerTransform);
     }
-    //   tasks.push(createOrUpdateReducerTests(argv));
+    tasks.push(reducerTestsTransform);
   }
   if (magic || withComponent) {
     if (!testsOnly) {

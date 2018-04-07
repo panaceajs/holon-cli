@@ -9,6 +9,7 @@ const actionsTestsTransform = require('../actions-tests');
 const actionTypesTransform = require('../action-types');
 const actionTypesTestsTransform = require('../action-types-tests');
 const reducerTransform = require('../reducer');
+const reducerTestsTransform = require('../reducer-tests');
 
 module.exports = argv => {
   const {
@@ -50,7 +51,7 @@ module.exports = argv => {
     if (!testsOnly) {
       tasks.push(reducerTransform);
     }
-    //   tasks.push(createOrUpdateReducerTests(argv));
+    tasks.push(reducerTestsTransform);
   }
 
   return processStreams(options, tasks);

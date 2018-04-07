@@ -1,7 +1,7 @@
 const { completeActionTypes } = require('../utils/state');
 
 module.exports = ({ types: t }) => ({
-  name: 'holon-reducer-initial-state',
+  name: 'holon-container-test-initial-state',
   visitor: {
     VariableDeclarator(
       path,

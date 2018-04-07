@@ -31,6 +31,12 @@ Please refer to command line help (for now).
 $ holon
 ```
 
+### Create next.js pages
+
+```
+$ cd pages
+$ holon nextjs-page --stateNamespace pageName --actionTypes fetchUsers:users selectUser:currentUser --magic
+```
 
 ## License
 

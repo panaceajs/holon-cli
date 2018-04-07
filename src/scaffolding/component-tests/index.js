@@ -27,9 +27,7 @@ module.exports = ({
   const allDispatchProps = [...dispatchProps, ...Object.keys(actionTypes)];
 
   const componentName = toUpperCaseVariableName(name);
-  console.log(
-    resolve(cwd, 'components', componentName, '__tests__', 'index.spec.js')
-  );
+
   return (replace ||
   !exists(
     resolve(cwd, 'components', componentName, '__tests__', 'index.spec.js')

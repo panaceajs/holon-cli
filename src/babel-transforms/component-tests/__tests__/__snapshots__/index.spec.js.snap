@@ -14,14 +14,18 @@ describe('description', () => {
   beforeEach(() => {
     console.log('this beforeEach block should not be removed by transform');
   });
+  it('should render properly', () => {
+    const wrapper = shallow(<ExampleComponent></ExampleComponent>);
+    expect(wrapper).toMatchSnapshot();
+  });
   it('should set \`doSomething\` prop properly', () => {
-    const doSomethingValue = function doSomethingFn() {};
+    const doSomethingValue = () => {};
 
     const wrapper = shallow(<ExampleComponent doSomething={doSomethingValue}></ExampleComponent>);
     expect(wrapper).toMatchSnapshot();
   });
   it('should set \`doSomethingElse\` prop properly', () => {
-    const doSomethingElseValue = function doSomethingElseFn() {};
+    const doSomethingElseValue = () => {};
 
     const wrapper = shallow(<ExampleComponent doSomethingElse={doSomethingElseValue}></ExampleComponent>);
     expect(wrapper).toMatchSnapshot();
@@ -43,6 +47,10 @@ describe('description', () => {
 describe('description', () => {
   beforeEach(() => {
     console.log('this beforeEach block should not be removed by transform');
+  });
+  it('should render properly', () => {
+    const wrapper = shallow(<ExampleComponent></ExampleComponent>);
+    expect(wrapper).toMatchSnapshot();
   });
   it('should set \`first\` prop properly', () => {
     const firstValue = 'first value';
@@ -71,6 +79,10 @@ describe('description', () => {
 describe('description', () => {
   beforeEach(() => {
     console.log('this beforeEach block should not be removed by transform');
+  });
+  it('should render properly', () => {
+    const wrapper = shallow(<ExampleComponent></ExampleComponent>);
+    expect(wrapper).toMatchSnapshot();
   });
   it('should set \`first\` prop properly', () => {
     const firstValue = 'first value';
@@ -126,8 +138,12 @@ describe('description', () => {
     });
     expect(wrapper).toMatchSnapshot();
   });
+  it('should render properly', () => {
+    const wrapper = shallow(<ExampleComponent></ExampleComponent>);
+    expect(wrapper).toMatchSnapshot();
+  });
   it('should set \`nonExistingAction\` prop properly', () => {
-    const nonExistingActionValue = function nonExistingActionFn() {};
+    const nonExistingActionValue = () => {};
 
     const wrapper = shallow(<ExampleComponent nonExistingAction={nonExistingActionValue}></ExampleComponent>);
     expect(wrapper).toMatchSnapshot();
@@ -174,6 +190,10 @@ describe('description', () => {
     const wrapper = shallow(<ExampleComponent existingAction={existingActionValue}></ExampleComponent>, {
       dive: true, keep: true
     });
+    expect(wrapper).toMatchSnapshot();
+  });
+  it('should render properly', () => {
+    const wrapper = shallow(<ExampleComponent></ExampleComponent>);
     expect(wrapper).toMatchSnapshot();
   });
   it('should set \`nonExisting\` prop properly', () => {

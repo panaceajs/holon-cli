@@ -1,10 +1,13 @@
 const { resolve } = require('path');
 const processStreams = require('../../utils/stream-sequence');
 const actionTypesTransform = require('./');
+const actionTypesTestsTransform = require('../action-types-tests');
 const actionsTransform = require('../actions');
+const actionsTestsTransform = require('../actions-tests');
 const reducerTransform = require('../reducer');
 const containerTransform = require('../container');
 const componentTransform = require('../component');
+const componentTestsTransform = require('../component-tests');
 
 module.exports = argv => {
   const {
@@ -28,13 +31,13 @@ module.exports = argv => {
   if (!testsOnly) {
     tasks.push(actionTypesTransform);
   }
-  //   tasks.push(createActionsTests);
+  tasks.push(actionTypesTestsTransform);
 
   if (magic || withActions) {
     if (!testsOnly) {
       tasks.push(actionsTransform);
     }
-    // tasks.push(createOrUpdateActionTypeTests(argv));
+    tasks.push(actionsTestsTransform);
   }
 
   if (magic || withReducer) {
@@ -44,7 +47,6 @@ module.exports = argv => {
     //   tasks.push(createOrUpdateReducerTests(argv));
   }
 
-  //   return merge2(tasks.map(task => task(argv)));
   if (magic || withContainer) {
     if (!testsOnly) {
       tasks.push(containerTransform);
@@ -56,7 +58,7 @@ module.exports = argv => {
     if (!testsOnly) {
       tasks.push(componentTransform);
     }
-    //   tasks.push(createOrUpdateReducerTests(argv));
+    tasks.push(componentTestsTransform);
   }
 
   return processStreams(options, tasks);

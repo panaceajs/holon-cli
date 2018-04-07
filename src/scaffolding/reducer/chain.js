@@ -2,8 +2,11 @@ const { resolve } = require('path');
 const processStreams = require('../../utils/stream-sequence');
 const reducerTransform = require('./');
 const actionsTransform = require('../actions');
+const actionsTestsTransform = require('../actions-tests');
 const actionTypesTransform = require('../action-types');
+const actionTypesTestsTransform = require('../action-types-tests');
 const componentTransform = require('../component');
+const componentTestsTransform = require('../component-tests');
 const containerTransform = require('../container');
 
 module.exports = argv => {
@@ -29,26 +32,26 @@ module.exports = argv => {
   if (!testsOnly) {
     tasks.push(reducerTransform);
   }
-  //   tasks.push(reducerTransformTests);
+  // tasks.push(reducerTransformTests);
 
   if (magic || withActionTypes) {
     if (!testsOnly) {
       tasks.push(actionTypesTransform);
     }
-    // tasks.push(actionTypesTransformTests);
+    tasks.push(actionTypesTestsTransform);
   }
   if (magic || withActions) {
     if (!testsOnly) {
       tasks.push(actionsTransform);
     }
-    // tasks.push(actionTypesTransformTests);
+    tasks.push(actionsTestsTransform);
   }
 
   if (magic || withComponent) {
     if (!testsOnly) {
       tasks.push(componentTransform);
     }
-    // tasks.push(actionTypesTransformTests);
+    tasks.push(componentTestsTransform);
   }
 
   if (magic || withContainer) {

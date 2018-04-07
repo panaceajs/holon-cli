@@ -1,0 +1,186 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`holon-component-tests-before-each it should add tests for function props: it should add tests for function props 1`] = `
+"
+describe('description', () => {
+  beforeEach(() => {
+    console.log('this beforeEach block should not be removed by transform');
+  });
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+describe('description', () => {
+  beforeEach(() => {
+    console.log('this beforeEach block should not be removed by transform');
+  });
+  it('should set \`doSomething\` prop properly', () => {
+    const doSomethingValue = () => {};
+
+    const wrapper = shallow(<ExampleComponent doSomething={doSomethingValue}></ExampleComponent>);
+    expect(wrapper).toMatchSnapshot();
+  });
+  it('should set \`doSomethingElse\` prop properly', () => {
+    const doSomethingElseValue = () => {};
+
+    const wrapper = shallow(<ExampleComponent doSomethingElse={doSomethingElseValue}></ExampleComponent>);
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+"
+`;
+
+exports[`holon-component-tests-before-each it should add tests for props: it should add tests for props 1`] = `
+"
+describe('description', () => {
+  beforeEach(() => {
+    console.log('this beforeEach block should not be removed by transform');
+  });
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+describe('description', () => {
+  beforeEach(() => {
+    console.log('this beforeEach block should not be removed by transform');
+  });
+  it('should set \`first\` prop properly', () => {
+    const firstValue = 'first value';
+    const wrapper = shallow(<ExampleComponent first={firstValue}></ExampleComponent>);
+    expect(wrapper).toMatchSnapshot();
+  });
+  it('should set \`second\` prop properly', () => {
+    const secondValue = 'second value';
+    const wrapper = shallow(<ExampleComponent second={secondValue}></ExampleComponent>);
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+"
+`;
+
+exports[`holon-component-tests-before-each it should add tests for props: it should add tests for props 2`] = `
+"
+describe('description', () => {
+  beforeEach(() => {
+    console.log('this beforeEach block should not be removed by transform');
+  });
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+describe('description', () => {
+  beforeEach(() => {
+    console.log('this beforeEach block should not be removed by transform');
+  });
+  it('should set \`first\` prop properly', () => {
+    const firstValue = 'first value';
+    const wrapper = shallow(<ExampleComponent first={firstValue}></ExampleComponent>);
+    expect(wrapper).toMatchSnapshot();
+  });
+  it('should set \`second\` prop properly', () => {
+    const secondValue = 'second value';
+    const wrapper = shallow(<ExampleComponent second={secondValue}></ExampleComponent>);
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+"
+`;
+
+exports[`holon-component-tests-before-each it should complete tests for function props: it should complete tests for function props 1`] = `
+"
+describe('description', () => {
+  it('should set \`existing\` prop properly', () => {
+    const existingValue = 'existing value';
+    const wrapper = shallow(<ExampleComponent existing={existingValue}></ExampleComponent>, {
+      dive: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should set \`existingAction\` prop properly', () => {
+    const existingActionValue = function existingActionFn() {};
+
+    const wrapper = shallow(<ExampleComponent existingAction={existingActionValue}></ExampleComponent>, {
+      dive: true, keep: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+describe('description', () => {
+  it('should set \`existing\` prop properly', () => {
+    const existingValue = 'existing value';
+    const wrapper = shallow(<ExampleComponent existing={existingValue}></ExampleComponent>, {
+      dive: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should set \`existingAction\` prop properly', () => {
+    const existingActionValue = function existingActionFn() {};
+
+    const wrapper = shallow(<ExampleComponent existingAction={existingActionValue}></ExampleComponent>, {
+      dive: true, keep: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+  it('should set \`nonExistingAction\` prop properly', () => {
+    const nonExistingActionValue = () => {};
+
+    const wrapper = shallow(<ExampleComponent nonExistingAction={nonExistingActionValue}></ExampleComponent>);
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+"
+`;
+
+exports[`holon-component-tests-before-each it should complete tests for props: it should complete tests for props 1`] = `
+"
+describe('description', () => {
+  it('should set \`existing\` prop properly', () => {
+    const existingValue = 'existing value';
+    const wrapper = shallow(<ExampleComponent existing={existingValue}></ExampleComponent>, {
+      dive: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should set \`existingAction\` prop properly', () => {
+    const existingActionValue = function existingActionFn() {};
+
+    const wrapper = shallow(<ExampleComponent existingAction={existingActionValue}></ExampleComponent>, {
+      dive: true, keep: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+describe('description', () => {
+  it('should set \`existing\` prop properly', () => {
+    const existingValue = 'existing value';
+    const wrapper = shallow(<ExampleComponent existing={existingValue}></ExampleComponent>, {
+      dive: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should set \`existingAction\` prop properly', () => {
+    const existingActionValue = function existingActionFn() {};
+
+    const wrapper = shallow(<ExampleComponent existingAction={existingActionValue}></ExampleComponent>, {
+      dive: true, keep: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+  it('should set \`nonExisting\` prop properly', () => {
+    const nonExistingValue = 'nonExisting value';
+    const wrapper = shallow(<ExampleComponent nonExisting={nonExistingValue}></ExampleComponent>);
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+"
+`;

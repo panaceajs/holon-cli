@@ -1,10 +1,15 @@
 const { resolve } = require('path');
 const processStreams = require('../../utils/stream-sequence');
-const container = require('./');
-const actions = require('../actions');
-const actionTypesHandler = require('../action-types');
-const reducer = require('../reducer');
-const component = require('../component');
+const containerTransform = require('./');
+const containerTestsTransform = require('../container-tests');
+const actionsTransform = require('../actions');
+const actionsTestsTransform = require('../actions-tests');
+const actionTypesTransform = require('../action-types');
+const actionTypesTestsTransform = require('../action-types-tests');
+
+const reducerTransform = require('../reducer');
+const componentTransform = require('../component');
+const componentTestsTransform = require('../component-tests');
 
 module.exports = argv => {
   const {
@@ -22,35 +27,35 @@ module.exports = argv => {
   const tasks = [];
 
   if (!testsOnly) {
-    tasks.push(container);
+    tasks.push(containerTransform);
   }
-  //   tasks.push(createActionsTests);
+  tasks.push(containerTestsTransform);
 
   if (magic || withActionTypes) {
     if (!testsOnly) {
-      tasks.push(actionTypesHandler);
+      tasks.push(actionTypesTransform);
     }
-    // tasks.push(createOrUpdateActionTypeTests(argv));
+    tasks.push(actionTypesTestsTransform);
   }
 
   if (magic || withActions) {
     if (!testsOnly) {
-      tasks.push(actions);
+      tasks.push(actionsTransform);
     }
-    // tasks.push(createOrUpdateActionTypeTests(argv));
+    tasks.push(actionsTestsTransform);
   }
 
   if (magic || withReducer) {
     if (!testsOnly) {
-      tasks.push(reducer);
+      tasks.push(reducerTransform);
     }
     //   tasks.push(createOrUpdateReducerTests(argv));
   }
   if (magic || withComponent) {
     if (!testsOnly) {
-      tasks.push(component);
+      tasks.push(componentTransform);
     }
-    //   tasks.push(createOrUpdateReducerTests(argv));
+    tasks.push(componentTestsTransform);
   }
 
   return processStreams(options, tasks);

@@ -40,9 +40,9 @@ exports.builder = yargs =>
       testsOnly
     })
     .example(
-      `$ holon create component YourComponent
-// creates a component in ./components/YourComponent/index.js
-adasd`
+      `$ holon component YourComponent --stateNamespace someNamespace
+// creates a component in ./someNamespace/components/YourComponent
+`
     )
     .coerce({
       ...coerce

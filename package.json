@@ -3,7 +3,10 @@
   "version": "1.1.0",
   "main": "index.js",
   "license": "MIT",
-  "repository": "github:panaceajs/holon-cli",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:panaceajs/holon-cli.git"
+  },
   "bin": {
     "holon": "bin/cli.js"
   },

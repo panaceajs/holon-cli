@@ -7,6 +7,7 @@ const eventEmitter = require('events').EventEmitter;
 
 const colada = pinoColada();
 colada.pipe(process.stdout);
+
 // uhoh, this is not so good eh
 
 // eslint-disable-next-line

@@ -1,9 +1,27 @@
 const babelTemplate = require('@babel/template').default;
+const types = require('@babel/types');
 
 const camelCase = require('camel-case');
 const { findCallExpression } = require('../utils');
 
-const collectactionCreatorsTests = {
+const collectDefaultTest = {
+  ExpressionStatement(path) {
+    const {
+      node: {
+        expression: {
+          callee: { name } = {},
+          arguments: [{ value: itString } = {}] = []
+        }
+      } = {}
+    } = path;
+    if (name === 'it' && itString) {
+      if (itString === 'should render properly') {
+        this.cache.defaultTest = true;
+      }
+    }
+  }
+};
+const collectPropTests = {
   ExpressionStatement(path) {
     const {
       node: {
@@ -32,6 +50,46 @@ const buildComponentTest = babelTemplate(
   { sourceType: 'module' }
 );
 
+const createPropTest = ({ name, props, prop }) => {
+  const component = types.jSXElement(
+    types.jSXOpeningElement(
+      types.jSXIdentifier(name),
+      prop
+        ? [
+            types.jSXAttribute(
+              types.jSXIdentifier(prop),
+              types.jSXExpressionContainer(types.identifier(`${prop}Value`))
+            )
+          ]
+        : []
+    ),
+    types.jSXClosingElement(types.jSXIdentifier(name)),
+    []
+  );
+
+  return buildComponentTest({
+    TEST_NAME: types.stringLiteral(
+      prop ? `should set \`${prop}\` prop properly` : `should render properly`
+    ),
+    EXAMPLE_VAR: prop
+      ? types.VariableDeclaration('const', [
+          types.variableDeclarator(
+            types.identifier(`${prop}Value`),
+            props.indexOf(prop) !== -1
+              ? types.stringLiteral(`${prop} value`)
+              : types.arrowFunctionExpression([], types.blockStatement([]))
+          )
+        ])
+      : undefined,
+    WRAPPER_VAR: types.variableDeclaration('const', [
+      types.variableDeclarator(
+        types.identifier('wrapper'),
+        types.callExpression(types.identifier('shallow'), [component])
+      )
+    ])
+  });
+};
+
 module.exports = ({ types: t }) => ({
   name: 'holon-component-tests',
   visitor: {
@@ -43,6 +101,14 @@ module.exports = ({ types: t }) => ({
       // add and remove imports
       const describeCallExpression = findCallExpression(path, 'describe');
       if (describeCallExpression) {
+        const describeDescription = describeCallExpression.get('arguments.0');
+        if (
+          describeDescription &&
+          describeDescription.get('value') &&
+          describeDescription.get('value').node === 'component'
+        ) {
+          describeDescription.set('value', `\`${name}\` component`);
+        }
         const describeArrowFunctionExpression = describeCallExpression.get(
           'arguments.1'
         );
@@ -53,9 +119,20 @@ module.exports = ({ types: t }) => ({
           );
           if (describeBlockStatement) {
             // add missing tests
-
             const cache = {};
-            describeBlockStatement.traverse(collectactionCreatorsTests, {
+
+            describeBlockStatement.traverse(collectDefaultTest, {
+              cache
+            });
+
+            if (!cache.defaultTest) {
+              describeBlockStatement.pushContainer(
+                'body',
+                createPropTest({ name, props })
+              );
+            }
+
+            describeBlockStatement.traverse(collectPropTests, {
               cache
             });
 
@@ -64,42 +141,10 @@ module.exports = ({ types: t }) => ({
               .filter(prop => !cache[prop])
               .map(camelCase)
               .forEach(prop => {
-                const component = t.jSXElement(
-                  t.jSXOpeningElement(t.jSXIdentifier(name), [
-                    t.jSXAttribute(
-                      t.jSXIdentifier(prop),
-                      t.jSXExpressionContainer(t.identifier(`${prop}Value`))
-                    )
-                  ]),
-                  t.jSXClosingElement(t.jSXIdentifier(name)),
-                  []
+                describeBlockStatement.pushContainer(
+                  'body',
+                  createPropTest({ name, props, prop })
                 );
-
-                const propTest = buildComponentTest({
-                  TEST_NAME: t.stringLiteral(
-                    `should set \`${prop}\` prop properly`
-                  ),
-                  EXAMPLE_VAR: t.VariableDeclaration('const', [
-                    t.variableDeclarator(
-                      t.identifier(`${prop}Value`),
-                      props.indexOf(prop) !== -1
-                        ? t.stringLiteral(`${prop} value`)
-                        : t.functionExpression(
-                            t.identifier(`${prop}Fn`),
-                            [],
-                            t.blockStatement([])
-                          )
-                    )
-                  ]),
-                  WRAPPER_VAR: t.variableDeclaration('const', [
-                    t.variableDeclarator(
-                      t.identifier('wrapper'),
-                      t.callExpression(t.identifier('shallow'), [component])
-                    )
-                  ])
-                });
-
-                describeBlockStatement.pushContainer('body', propTest);
               });
           }
         }

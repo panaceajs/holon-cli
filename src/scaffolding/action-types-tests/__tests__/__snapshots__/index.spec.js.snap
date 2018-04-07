@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`action-types should create action types in \`action-types/index.js\` 1`] = `
+"
+--------------------------------------------------------------------------------
+// ./action-types/__tests__/index.spec.js
+// Create
+--------------------------------------------------------------------------------
+
+import { AN_ACTION, ANOTHER_ACTION } from '../';
+
+describe('\`root\` action types', () => {
+  it('should export \`AN_ACTION\` type', () => {
+    expect(AN_ACTION).toBe('AN_ACTION');
+  });
+  it('should export \`ANOTHER_ACTION\` type', () => {
+    expect(ANOTHER_ACTION).toBe('ANOTHER_ACTION');
+  });
+});
+
+
+
+"
+`;
+
+exports[`action-types should create action types in \`other-dir/action-types/index.js\` 1`] = `
+"
+--------------------------------------------------------------------------------
+// ./action-types/__tests__/index.spec.js
+// Create
+--------------------------------------------------------------------------------
+
+import { AN_ACTION, ANOTHER_ACTION } from '../';
+
+describe('\`root\` action types', () => {
+  it('should export \`AN_ACTION\` type', () => {
+    expect(AN_ACTION).toBe('AN_ACTION');
+  });
+  it('should export \`ANOTHER_ACTION\` type', () => {
+    expect(ANOTHER_ACTION).toBe('ANOTHER_ACTION');
+  });
+});
+
+
+
+"
+`;
+
+exports[`action-types should update action types in \`./action-types/index.js\` 1`] = `
+"
+--------------------------------------------------------------------------------
+// ./action-types/__tests__/index.spec.js
+// Create
+--------------------------------------------------------------------------------
+
+import { AN_ACTION, ANOTHER_ACTION } from '../';
+
+describe('\`root\` action types', () => {
+  it('should export \`AN_ACTION\` type', () => {
+    expect(AN_ACTION).toBe('AN_ACTION');
+  });
+  it('should export \`ANOTHER_ACTION\` type', () => {
+    expect(ANOTHER_ACTION).toBe('ANOTHER_ACTION');
+  });
+});
+
+
+
+"
+`;

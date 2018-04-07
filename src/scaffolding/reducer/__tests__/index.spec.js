@@ -28,23 +28,4 @@ describe('actions', () => {
       })
     ).resolves.toMatchSnapshot();
   });
-
-  // it('should create action types in `other-dir/actions/index.js`', async () => {
-  //   await expect(
-  //     snapshot(task, {
-  //       create: true,
-  //       cwd: resolve('other-dir'),
-  //       actionTypes: { anAction: 'anAction', anotherAction: 'anotherAction' }
-  //     })
-  //   ).resolves.toMatchSnapshot();
-  // });
-
-  // it('should update action types in `./actions/index.js`', async () => {
-  //   await expect(
-  //     snapshot(task, {
-  //       cwd: resolve(__dirname, '__fixtures__'),
-  //       actionTypes: { anAction: 'anAction', anotherAction: 'anotherAction' }
-  //     })
-  //   ).resolves.toMatchSnapshot();
-  // });
 });

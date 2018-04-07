@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`action-types should create action types in \`action-types/index.js\` 1`] = `
+"
+--------------------------------------------------------------------------------
+// ./actions/__tests__/index.spec.js
+// Create
+--------------------------------------------------------------------------------
+
+import { anAction, anotherAction } from '../';
+import { AN_ACTION, ANOTHER_ACTION } from '../../action-types';
+
+describe('\`root\` action creators', () => {
+  it('should export \`anAction\` function', () => {
+    expect(anAction).toBeDefined();
+    expect(anAction()).toEqual({
+      type: AN_ACTION
+    });
+  });
+  it('should export \`anotherAction\` function', () => {
+    expect(anotherAction).toBeDefined();
+    expect(anotherAction()).toEqual({
+      type: ANOTHER_ACTION
+    });
+  });
+});
+
+
+
+"
+`;
+
+exports[`action-types should create action types in \`other-dir/action-types/index.js\` 1`] = `
+"
+--------------------------------------------------------------------------------
+// ./actions/__tests__/index.spec.js
+// Create
+--------------------------------------------------------------------------------
+
+import { anAction, anotherAction } from '../';
+import { AN_ACTION, ANOTHER_ACTION } from '../../action-types';
+
+describe('\`root\` action creators', () => {
+  it('should export \`anAction\` function', () => {
+    expect(anAction).toBeDefined();
+    expect(anAction()).toEqual({
+      type: AN_ACTION
+    });
+  });
+  it('should export \`anotherAction\` function', () => {
+    expect(anotherAction).toBeDefined();
+    expect(anotherAction()).toEqual({
+      type: ANOTHER_ACTION
+    });
+  });
+});
+
+
+
+"
+`;
+
+exports[`action-types should update action types in \`./action-types/index.js\` 1`] = `
+"
+--------------------------------------------------------------------------------
+// ./actions/__tests__/index.spec.js
+// Create
+--------------------------------------------------------------------------------
+
+import { anAction, anotherAction } from '../';
+import { AN_ACTION, ANOTHER_ACTION } from '../../action-types';
+
+describe('\`root\` action creators', () => {
+  it('should export \`anAction\` function', () => {
+    expect(anAction).toBeDefined();
+    expect(anAction()).toEqual({
+      type: AN_ACTION
+    });
+  });
+  it('should export \`anotherAction\` function', () => {
+    expect(anotherAction).toBeDefined();
+    expect(anotherAction()).toEqual({
+      type: ANOTHER_ACTION
+    });
+  });
+});
+
+
+
+"
+`;

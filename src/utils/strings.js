@@ -4,8 +4,8 @@ const ucf = require('upper-case-first');
 const toVariableName = name =>
   camelCase(
     name
-      .replace(/[^a-zA-Z0-9 :]/g, '')
-      .replace(/^[0-9:]+/g, '')
+      .replace(/[^a-zA-Z0-9_ :]/g, '')
+      .replace(/^[0-9_:]+/g, '')
       .trim()
   );
 

@@ -1,4 +1,5 @@
 const { resolve } = require('path');
+const upperCaseFirst = require('upper-case-first');
 const processStreams = require('../../utils/stream-sequence');
 const componentTransform = require('./');
 const componentTestsTransform = require('../component-tests');
@@ -22,7 +23,10 @@ module.exports = argv => {
     withReducer
   } = argv;
 
-  const options = { ...argv, cwd: resolve(process.cwd(), stateNamespace) };
+  const options = {
+    ...argv,
+    cwd: resolve(process.cwd(), upperCaseFirst(stateNamespace))
+  };
   const tasks = [];
   if (!testsOnly) {
     tasks.push(componentTransform);

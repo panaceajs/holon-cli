@@ -1,47 +1,42 @@
 const { resolve } = require('path');
-const upperCaseFirst = require('upper-case-first');
 const processStreams = require('../../utils/stream-sequence');
-const actionsTransform = require('./');
+const moduleTransform = require('./');
+const reducerTransform = require('../reducer');
+const reducerTestsTransform = require('../reducer-tests');
+const actionsTransform = require('../actions');
 const actionsTestsTransform = require('../actions-tests');
 const actionTypesTransform = require('../action-types');
 const actionTypesTestsTransform = require('../action-types-tests');
-const reducerTransform = require('../reducer');
-const reducerTestsTransform = require('../reducer-tests');
-const containerTransform = require('../container');
-const containerTestsTransform = require('../container-tests');
 const componentTransform = require('../component');
 const componentTestsTransform = require('../component-tests');
+const containerTransform = require('../container');
+const containerTestsTransform = require('../container-tests');
 
 module.exports = argv => {
   const {
     stateNamespace,
     magic,
     testsOnly,
+    withActions,
     withActionTypes,
-    withReducer,
     withContainer,
-    withComponent
+    withComponent,
+    withReducer
+
+    // , magic, withActionTypes, withReducer
   } = argv;
 
   const options = {
     ...argv,
     name: 'Example',
-    cwd: resolve(process.cwd(), upperCaseFirst(stateNamespace))
+    cwd: resolve(process.cwd(), stateNamespace)
   };
-
   const tasks = [];
 
   if (!testsOnly) {
-    tasks.push(actionsTransform);
+    tasks.push(moduleTransform);
   }
-  tasks.push(actionsTestsTransform);
-
-  if (magic || withActionTypes) {
-    if (!testsOnly) {
-      tasks.push(actionTypesTransform);
-    }
-    tasks.push(actionTypesTestsTransform);
-  }
+  // tasks.push(reducerTestsTransform);
 
   if (magic || withReducer) {
     if (!testsOnly) {
@@ -50,11 +45,17 @@ module.exports = argv => {
     tasks.push(reducerTestsTransform);
   }
 
-  if (magic || withContainer) {
+  if (magic || withActionTypes) {
     if (!testsOnly) {
-      tasks.push(containerTransform);
+      tasks.push(actionTypesTransform);
     }
-    tasks.push(containerTestsTransform);
+    tasks.push(actionTypesTestsTransform);
+  }
+  if (magic || withActions) {
+    if (!testsOnly) {
+      tasks.push(actionsTransform);
+    }
+    tasks.push(actionsTestsTransform);
   }
 
   if (magic || withComponent) {
@@ -62,6 +63,13 @@ module.exports = argv => {
       tasks.push(componentTransform);
     }
     tasks.push(componentTestsTransform);
+  }
+
+  if (magic || withContainer) {
+    if (!testsOnly) {
+      tasks.push(containerTransform);
+    }
+    tasks.push(containerTestsTransform);
   }
 
   return processStreams(options, tasks);

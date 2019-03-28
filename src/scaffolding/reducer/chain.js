@@ -1,4 +1,5 @@
 const { resolve } = require('path');
+const upperCaseFirst = require('upper-case-first');
 const processStreams = require('../../utils/stream-sequence');
 const reducerTransform = require('./');
 const reducerTestsTransform = require('../reducer-tests');
@@ -27,7 +28,7 @@ module.exports = argv => {
   const options = {
     ...argv,
     name: 'Example',
-    cwd: resolve(process.cwd(), stateNamespace)
+    cwd: resolve(process.cwd(), upperCaseFirst(stateNamespace))
   };
   const tasks = [];
 

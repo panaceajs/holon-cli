@@ -1,7 +1,7 @@
 const { resolve } = require('path');
 const processStreams = require('../../utils/stream-sequence');
 const containerTransform = require('./');
-const containerTestsTransform = require('../container-tests');
+// const containerTestsTransform = require('../container-tests');
 const actionsTransform = require('../actions');
 const actionsTestsTransform = require('../actions-tests');
 const actionTypesTransform = require('../action-types');
@@ -26,10 +26,10 @@ module.exports = argv => {
 
   const tasks = [];
 
-  if (!testsOnly) {
-    tasks.push(containerTransform);
-  }
-  tasks.push(containerTestsTransform);
+  tasks.push(containerTransform);
+  // if (!testsOnly) {
+  // }
+  // tasks.push(containerTestsTransform);
 
   if (magic || withActionTypes) {
     if (!testsOnly) {

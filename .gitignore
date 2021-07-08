@@ -1,3 +1,11 @@
 node_modules
-package-lock.json
 yarn-error.log
+.crap
+./junit.xml
+reports
+.DS_Store
+coverage
+.tmp
+.tern-project
+.vscode
+

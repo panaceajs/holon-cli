@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`action-types should create action types in \`action-types/index.js\` 1`] = `
+"
+--------------------------------------------------------------------------------
+// ./action-types/index.js
+// Create
+--------------------------------------------------------------------------------
+
+export const ANOTHER_ACTION = 'ANOTHER_ACTION';
+export const AN_ACTION = 'AN_ACTION';
+
+
+
+"
+`;
+
+exports[`action-types should create action types in \`other-dir/action-types/index.js\` 1`] = `
+"
+--------------------------------------------------------------------------------
+// ./action-types/index.js
+// Create
+--------------------------------------------------------------------------------
+
+export const ANOTHER_ACTION = 'ANOTHER_ACTION';
+export const AN_ACTION = 'AN_ACTION';
+
+
+
+"
+`;
+
+exports[`action-types should update action types in \`./action-types/index.js\` 1`] = `
+"
+--------------------------------------------------------------------------------
+// ./action-types/index.js
+// Update
+--------------------------------------------------------------------------------
+
+export const EXISTING_ACTION = 'EXISTING_ACTION';
+export const ANOTHER_ACTION =  'ANOTHER_ACTION_WITH_A_VALUE_WHICH_SHOULD_NOT_BE_OVERWRITTEN';
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+
+
+export const EXISTING_ACTION = 'EXISTING_ACTION';
+export const ANOTHER_ACTION = 'ANOTHER_ACTION_WITH_A_VALUE_WHICH_SHOULD_NOT_BE_OVERWRITTEN';
+export const AN_ACTION = \\"AN_ACTION\\";
+
+
+"
+`;

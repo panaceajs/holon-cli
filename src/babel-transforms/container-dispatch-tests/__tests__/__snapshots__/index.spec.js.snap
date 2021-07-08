@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`holon-container-dispatch-tests it should add test case for action types: it should add test case for action types 1`] = `
+"
+describe('\`ExampleComponent\` component', () => {
+  it('maps \`existingAction\` to dispatch \`EXISTING_ACTION\` action.', () => {
+    // should not be modified by transform
+    const existingActionValue = 'existingActionValue';
+    const wrapper = shallow(<ExampleComponent store={store} />);
+    wrapper.props().existingAction(existingActionValue);
+    expect(store.dispatch).toHaveBeenCalledWith(existingAction(existingActionValue));
+
+    // do other stuff
+  });
+
+  it('should be ignored by transform', () => {});
+
+  it('does nothing');
+});
+
+describe('\`Some\` component');
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+describe('\`ExampleComponent\` component', () => {
+  it('maps \`existingAction\` to dispatch \`EXISTING_ACTION\` action.', () => {
+    // should not be modified by transform
+    const existingActionValue = 'existingActionValue';
+    const wrapper = shallow(<ExampleComponent store={store} />);
+    wrapper.props().existingAction(existingActionValue);
+    expect(store.dispatch).toHaveBeenCalledWith(existingAction(existingActionValue));
+
+    // do other stuff
+  });
+
+  it('should be ignored by transform', () => {});
+
+  it('does nothing');
+  it('maps \`first\` to dispatch \`FIRST\` action.', () => {
+    const firstValue = 'firstValue';
+    const wrapper = shallow(<ExampleComponent store={store} />);
+    wrapper.props().first(firstValue);
+    expect(store.dispatch).toHaveBeenCalledWith(first(firstValue));
+  });
+});
+
+describe('\`Some\` component');
+"
+`;
+
+exports[`holon-container-dispatch-tests it should not overwrite existing test case for action types: it should not overwrite existing test case for action types 1`] = `
+"
+describe('\`ExampleComponent\` component', () => {
+  it('maps \`existingAction\` to dispatch \`EXISTING_ACTION\` action.', () => {
+    // should not be modified by transform
+    const existingActionValue = 'existingActionValue';
+    const wrapper = shallow(<ExampleComponent store={store} />);
+    wrapper.props().existingAction(existingActionValue);
+    expect(store.dispatch).toHaveBeenCalledWith(existingAction(existingActionValue));
+
+    // do other stuff
+  });
+
+  it('should be ignored by transform', () => {});
+
+  it('does nothing');
+});
+
+describe('\`Some\` component');
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+describe('\`ExampleComponent\` component', () => {
+  it('maps \`existingAction\` to dispatch \`EXISTING_ACTION\` action.', () => {
+    // should not be modified by transform
+    const existingActionValue = 'existingActionValue';
+    const wrapper = shallow(<ExampleComponent store={store} />);
+    wrapper.props().existingAction(existingActionValue);
+    expect(store.dispatch).toHaveBeenCalledWith(existingAction(existingActionValue));
+
+    // do other stuff
+  });
+
+  it('should be ignored by transform', () => {});
+
+  it('does nothing');
+  it('maps \`first\` to dispatch \`FIRST\` action.', () => {
+    const firstValue = 'firstValue';
+    const wrapper = shallow(<ExampleComponent store={store} />);
+    wrapper.props().first(firstValue);
+    expect(store.dispatch).toHaveBeenCalledWith(first(firstValue));
+  });
+});
+
+describe('\`Some\` component');
+"
+`;

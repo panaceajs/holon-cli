@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`holon-component-default-export it should add default export.: it should add default export. 1`] = `
+"
+console.log('nothing going on here');
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+console.log('nothing going on here');
+export default (() => <div><h2 className=\\"holon-component-title\\"></h2><ul className=\\"holon-component-props\\"></ul></div>);
+"
+`;

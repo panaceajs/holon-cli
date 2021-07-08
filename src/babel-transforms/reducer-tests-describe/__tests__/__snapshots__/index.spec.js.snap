@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`holon-component-tests-describe it should add default export.: it should add default export. 1`] = `
+"
+console.log('nothing going on here');
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+console.log('nothing going on here');
+describe('component', () => {});
+"
+`;

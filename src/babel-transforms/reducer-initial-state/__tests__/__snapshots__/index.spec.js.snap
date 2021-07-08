@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`holon-reducer-initial-state it should add action types to new state namespace in case of variable assignment: it should add action types to new state namespace in case of variable assignment 1`] = `
+"
+export default (
+  state = {
+    existing: 'existing'
+  }
+) => {};
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+export default ((state = {
+  existing: 'existing',
+  foo: 'foo-initial-value'
+}) => {});
+"
+`;
+
+exports[`holon-reducer-initial-state it should complete action types to existing state namespace in case of variable assignment: it should complete action types to existing state namespace in case of variable assignment 1`] = `
+"
+export default (
+  state = {
+    existing: 'existing'
+  }
+) => {};
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+export default ((state = {
+  existing: 'existing',
+  foo: 'foo-initial-value'
+}) => {});
+"
+`;

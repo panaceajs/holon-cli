@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`holon-action-types it should add action type exports.: it should add action type exports. 1`] = `
+"
+console.log('nothing going on here');
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+export const SOME_ACTION = 'SOME_ACTION';
+console.log('nothing going on here');
+"
+`;
+
+exports[`holon-action-types it should update action type exports.: it should update action type exports. 1`] = `
+"
+export const EXISTING_ACTION = 'EXISTING_ACTION';
+console.log('nothing going on here');
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+export const EXISTING_ACTION = 'EXISTING_ACTION';
+export const NON_EXISTING_ACTION = 'NON_EXISTING_ACTION';
+console.log('nothing going on here');
+"
+`;

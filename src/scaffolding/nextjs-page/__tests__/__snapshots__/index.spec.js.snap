@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`actions should add import action types statmenett\` 1`] = `
+"
+--------------------------------------------------------------------------------
+// ./store/reducer.js
+// Create
+--------------------------------------------------------------------------------
+
+import { AN_ACTION, ANOTHER_ACTION } from '../action-types';
+
+export default (
+  state = {
+    anAction: 'anAction-initial-value',
+    anotherAction: 'anotherAction-initial-value'
+  },
+  action
+) => {
+  const { type, payload, error } = action;
+
+  switch (type) {
+    case AN_ACTION: {
+      return {
+        ...state,
+        anAction: payload || 'anAction-value',
+        error
+      };
+    }
+
+    case ANOTHER_ACTION: {
+      return {
+        ...state,
+        anotherAction: payload || 'anotherAction-value',
+        error
+      };
+    }
+
+    default:
+      return state;
+  }
+};
+
+
+
+"
+`;
+
+exports[`actions should add import action types statmenett\` 2`] = `
+"
+--------------------------------------------------------------------------------
+// ./store/reducer.js
+// Create
+--------------------------------------------------------------------------------
+
+import { EXISTING_ACTION } from '../action-types';
+
+export default (
+  state = {
+    existingAction: 'existingAction-initial-value'
+  },
+  action
+) => {
+  const { type, payload, error } = action;
+
+  switch (type) {
+    case EXISTING_ACTION: {
+      return {
+        ...state,
+        existingAction: payload || 'existingAction-value',
+        error
+      };
+    }
+
+    default:
+      return state;
+  }
+};
+
+
+
+"
+`;
+
+exports[`actions should create action types in \`actions/index.js\` 1`] = `
+"
+--------------------------------------------------------------------------------
+// ./store/reducer.js
+// Create
+--------------------------------------------------------------------------------
+
+import { AN_ACTION, ANOTHER_ACTION } from '../action-types';
+
+export default (
+  state = {
+    anAction: 'anAction-initial-value',
+    anotherAction: 'anotherAction-initial-value'
+  },
+  action
+) => {
+  const { type, payload, error } = action;
+
+  switch (type) {
+    case AN_ACTION: {
+      return {
+        ...state,
+        anAction: payload || 'anAction-value',
+        error
+      };
+    }
+
+    case ANOTHER_ACTION: {
+      return {
+        ...state,
+        anotherAction: payload || 'anotherAction-value',
+        error
+      };
+    }
+
+    default:
+      return state;
+  }
+};
+
+
+
+"
+`;

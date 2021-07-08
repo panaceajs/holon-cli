@@ -1,0 +1,177 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`holon-container-tests-before-each it should add tests for function props: it should add tests for function props 1`] = `
+"
+describe('description', () => {
+  beforeEach(() => {
+    console.log('this beforeEach block should not be removed by transform');
+  });
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+describe('description', () => {
+  let store;
+
+  beforeEach(() => {
+    console.log('this beforeEach block should not be removed by transform');
+    const mockStore = configureStore();
+    const initialState = {};
+    store = mockStore(initialState);
+    store.dispatch = jest.fn();
+  });
+});
+"
+`;
+
+exports[`holon-container-tests-before-each it should add tests for props: it should add tests for props 1`] = `
+"
+describe('description', () => {
+  beforeEach(() => {
+    console.log('this beforeEach block should not be removed by transform');
+  });
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+describe('description', () => {
+  let store;
+
+  beforeEach(() => {
+    console.log('this beforeEach block should not be removed by transform');
+    const mockStore = configureStore();
+    const initialState = {};
+    store = mockStore(initialState);
+    store.dispatch = jest.fn();
+  });
+});
+"
+`;
+
+exports[`holon-container-tests-before-each it should add tests for props: it should add tests for props 2`] = `
+"
+describe('description', () => {
+  beforeEach(() => {
+    console.log('this beforeEach block should not be removed by transform');
+  });
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+describe('description', () => {
+  let store;
+
+  beforeEach(() => {
+    console.log('this beforeEach block should not be removed by transform');
+    const mockStore = configureStore();
+    const initialState = {};
+    store = mockStore(initialState);
+    store.dispatch = jest.fn();
+  });
+});
+"
+`;
+
+exports[`holon-container-tests-before-each it should complete tests for function props: it should complete tests for function props 1`] = `
+"
+describe('description', () => {
+  it('should set \`existing\` prop properly', () => {
+    const existingValue = 'existing value';
+    const wrapper = shallow(<ExampleComponent existing={existingValue}></ExampleComponent>, {
+      dive: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should set \`existingAction\` prop properly', () => {
+    const existingActionValue = function existingActionFn() {};
+
+    const wrapper = shallow(<ExampleComponent existingAction={existingActionValue}></ExampleComponent>, {
+      dive: true, keep: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+describe('description', () => {
+  let store;
+  beforeEach(() => {
+    const mockStore = configureStore();
+    const initialState = {};
+    store = mockStore(initialState);
+    store.dispatch = jest.fn();
+  });
+
+  it('should set \`existing\` prop properly', () => {
+    const existingValue = 'existing value';
+    const wrapper = shallow(<ExampleComponent existing={existingValue}></ExampleComponent>, {
+      dive: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should set \`existingAction\` prop properly', () => {
+    const existingActionValue = function existingActionFn() {};
+
+    const wrapper = shallow(<ExampleComponent existingAction={existingActionValue}></ExampleComponent>, {
+      dive: true, keep: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+"
+`;
+
+exports[`holon-container-tests-before-each it should complete tests for props: it should complete tests for props 1`] = `
+"
+describe('description', () => {
+  it('should set \`existing\` prop properly', () => {
+    const existingValue = 'existing value';
+    const wrapper = shallow(<ExampleComponent existing={existingValue}></ExampleComponent>, {
+      dive: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should set \`existingAction\` prop properly', () => {
+    const existingActionValue = function existingActionFn() {};
+
+    const wrapper = shallow(<ExampleComponent existingAction={existingActionValue}></ExampleComponent>, {
+      dive: true, keep: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+describe('description', () => {
+  let store;
+  beforeEach(() => {
+    const mockStore = configureStore();
+    const initialState = {};
+    store = mockStore(initialState);
+    store.dispatch = jest.fn();
+  });
+
+  it('should set \`existing\` prop properly', () => {
+    const existingValue = 'existing value';
+    const wrapper = shallow(<ExampleComponent existing={existingValue}></ExampleComponent>, {
+      dive: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should set \`existingAction\` prop properly', () => {
+    const existingActionValue = function existingActionFn() {};
+
+    const wrapper = shallow(<ExampleComponent existingAction={existingActionValue}></ExampleComponent>, {
+      dive: true, keep: true
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+"
+`;

@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`holon-component-example it should add nothing when there is nothing to add.: it should add nothing when there is nothing to add. 1`] = `
+"
+import React from 'react';
+
+export default () => <div>123</div>;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import React from 'react';
+
+export default (() => <div>123</div>);
+"
+`;
+
+exports[`holon-component-example it should add props to props list of element with holon-component-props class.: it should add props to props list of element with holon-component-props class. 1`] = `
+"
+import React from 'react';
+
+export default ({ first = 10, functionProp = () => {  }}) => (<div><ul className=\\"holon-component-props\\"/></div>);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import React from 'react';
+
+export default (({ first = 10, functionProp = () => {} }) => <div><ul className=\\"holon-component-props\\"><li>first: {first}</li><li><button type=\\"button\\" onClick={() => {
+        functionProp();
+      }}>functionProp action</button></li></ul></div>);
+"
+`;
+
+exports[`holon-component-example it should change component name of component with holon-component-title class.: it should change component name of component with holon-component-title class. 1`] = `
+"
+import React from 'react';
+
+export default () => (<div><h2 className=\\"holon-component-title\\"></h2></div>);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import React from 'react';
+
+export default (() => <div><h2 className=\\"holon-component-title\\">ExampleComponent</h2></div>);
+"
+`;
